@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contexts\" />
     <Folder Include="Images\" />
     <Folder Include="Views\Pages\" />
     <Folder Include="Views\Elements\" />

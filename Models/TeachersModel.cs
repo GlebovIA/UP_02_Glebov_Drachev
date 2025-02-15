@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-
-namespace UP_02_Glebov_Drachev.Models
+﻿namespace UP_02_Glebov_Drachev.Models
 {
-    public class Teachers
+    public class TeachersModel
     {
         private int id;
         private string surname;

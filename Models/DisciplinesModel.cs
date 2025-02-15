@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UP_02_Glebov_Drachev.Models
 {
-    public class Groups
+    public class DisciplinesModel
     {
         private int id;
         private string name;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UP_02_Glebov_Drachev.Models
 {
-    public class Marks
+    public class MarksModel
     {
         private int id;
         private DateTime date;

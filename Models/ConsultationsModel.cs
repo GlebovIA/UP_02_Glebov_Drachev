@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace UP_02_Glebov_Drachev.Models
 {
-    public class Consultations
+    public class ConsultationsModel
     {
         private int id;
         private int teacher;
