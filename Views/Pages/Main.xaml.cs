@@ -1,24 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using UP_02_Glebov_Drachev.Views.Elements;
 
 namespace UP_02_Glebov_Drachev.Views.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для Main.xaml
-    /// </summary>
     public partial class Main : Page
     {
         public Main()
@@ -26,6 +12,25 @@ namespace UP_02_Glebov_Drachev.Views.Pages
             InitializeComponent();
         }
 
+        // Обработчик события для прокрутки колесиком мыши
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            var scrollViewer = sender as ScrollViewer;
+            if (scrollViewer != null)
+            {
+                if (e.Delta > 0)
+                {
+                    scrollViewer.LineLeft(); // Прокрутка влево
+                }
+                else
+                {
+                    scrollViewer.LineRight(); // Прокрутка вправо
+                }
+                e.Handled = true; // Предотвращаем дальнейшую обработку события
+            }
+        }
+
+        // Обработчики событий для вкладок
         private void Click_Absences(object sender, RoutedEventArgs e)
         {
             frame_main.Navigate(new AbsencesElement());
