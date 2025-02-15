@@ -8,6 +8,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UP_02_Glebov_Drachev.Views.Elements;
+using UP_02_Glebov_Drachev.Views.Pages;
 
 namespace UP_02_Glebov_Drachev
 {
@@ -19,6 +21,12 @@ namespace UP_02_Glebov_Drachev
         public MainWindow()
         {
             InitializeComponent();
+            Click_Main();
+        }
+
+        private void Click_Main()
+        {
+            frame_main.Navigate(new Main());
         }
     }
 }

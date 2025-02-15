@@ -18,7 +18,7 @@ namespace UP_02_Glebov_Drachev.Classes
             {
                 if (login != "" & pwd != "")
                 {
-                    Connection = new MySqlConnection($"server= ;database=UP_02_Glebov_Drachev;user=root;pwd=");
+                    Connection = new MySqlConnection($"server=127.0.0.1;database=UP_02_Glebov_Drachev;user=root;pwd=;port=3307");
                     return Connection;
                 }
                 else
