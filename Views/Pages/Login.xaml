@@ -1,14 +1,96 @@
-﻿<Page x:Class="UP_02_Glebov_Drachev.Views.Pages.LoginPage"
+﻿<Page x:Class="UP_02_Glebov_Drachev.Views.Pages.Login"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UP_02_Glebov_Drachev.Views.Pages"
+      xmlns:phTBx="clr-namespace:UP_02_Glebov_Drachev.Views.Дерьмо"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="LoginPage">
+      Title="LoginPage"
+      Background="#FF0060AC">
 
     <Grid>
-        
+        <Border Background="White" 
+                CornerRadius="20" 
+                Width="350" 
+                Height="300" 
+                VerticalAlignment="Center" 
+                HorizontalAlignment="Center"
+                BorderBrush="#ffc1c1c1"
+                BorderThickness="4">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <!-- Заголовок -->
+                <TextBlock Text="Авторизация" 
+                           FontSize="24" 
+                           FontWeight="Bold" 
+                           HorizontalAlignment="Center" 
+                           Foreground="#FF0060AC"
+                           Margin="0,0,0,20"/>
+
+                <!-- Поле для ввода логина -->
+                <Border CornerRadius="10" 
+                         Background="White" 
+                         BorderBrush="#ffc1c1c1" 
+                         BorderThickness="2" 
+                         Margin="0,0,0,20">
+                    <phTBx:PlaceholderedTextBox x:Name="LoginTextBox" 
+                              Width="300" 
+                              Height="40" 
+                              Padding="10" 
+                              FontSize="16" 
+                              Background="Transparent" 
+                              BorderThickness="0" 
+                              Foreground="Black"
+                              PlaceHolder="Логин"/>
+                </Border>
+
+                <!-- Поле для ввода пароля -->
+                <Border CornerRadius="10" 
+                    Background="White" 
+                    BorderBrush="#ffc1c1c1" 
+                    BorderThickness="2" 
+                    Margin="0,0,0,20">
+                    <phTBx:PlaceholderedPasswordBox x:Name="PasswordTextBox" 
+                                  Width="300" 
+                                  Height="40" 
+                                  Padding="10" 
+                                  FontSize="16" 
+                                  Background="Transparent" 
+                                  BorderThickness="0" 
+                                  Foreground="Black"
+                                  PlaceHolder="Пароль"/>
+                    <!-- Установите placeholder -->
+                </Border>
+
+                <!-- Кнопки входа и регистрации -->
+                <Grid Margin="0,0,0,20">
+                    <phTBx:RoundButton Text="Вход" OnClick="SignInClick" OnEnter="ButtonEnter" OnLeave="ButtonLeave" HorizontalAlignment="Left"/>
+
+                    <Border CornerRadius="10" 
+                            Background="#FFE41613" 
+                            Width="150" 
+                            Height="40" 
+                            HorizontalAlignment="Right">
+                        <Button x:Name="RegInButton" 
+                                Content="Регистрация" 
+                                FontSize="16" 
+                                Background="Transparent" 
+                                Foreground="White" 
+                                BorderBrush="Transparent" 
+                                Cursor="Hand" 
+                                Padding="0"
+                                MouseDown="RegInClick"/>
+                    </Border>
+                </Grid>
+
+                <!-- Ссылка "Забыли пароль?" -->
+                <TextBlock Text="Забыли пароль?" 
+                           FontSize="14" 
+                           FontWeight="Bold" 
+                           HorizontalAlignment="Center" 
+                           Foreground="#FF0060AC"
+                           MouseDown="ForgotPassword"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Page>

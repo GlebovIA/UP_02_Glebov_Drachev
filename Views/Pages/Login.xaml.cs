@@ -1,28 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using static UP_02_Glebov_Drachev.MainWindow;
 
 namespace UP_02_Glebov_Drachev.Views.Pages
 {
     /// <summary>
     /// Логика взаимодействия для LoginPage.xaml
     /// </summary>
-    public partial class LoginPage : Page
+    public partial class Login : Page
     {
-        public LoginPage()
+        public Login()
         {
             InitializeComponent();
+        }
+
+        private void ForgotPassword(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        private void SignInClick(object sender, RoutedEventArgs e)
+        {
+            OpenPages(new GeneralPage());
+        }
+        private void RegInClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+        private void ButtonEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+        private void ButtonLeave(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

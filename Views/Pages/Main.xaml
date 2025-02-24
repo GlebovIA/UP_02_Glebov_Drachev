@@ -5,7 +5,6 @@
       Title="Управление базой данных" Background="#FF9EA1A2">
 
     <Grid>
-        <!-- Верхняя панель -->
         <Grid Margin="0" VerticalAlignment="Top" Height="60" Background="#FFE41613">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="31" Direction="260" Color="#ffc1c1c1" ShadowDepth="0"/>
@@ -14,7 +13,6 @@
             <Label Content="Учебное заведение" Foreground="White" FontSize="32" VerticalAlignment="Center" Margin="20, 0"/>
         </Grid>
 
-        <!-- Панель вкладок -->
         <ScrollViewer Margin="10,77,10,0" Height="51" VerticalAlignment="Top"
                       HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled"
                       PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
@@ -57,7 +55,6 @@
             </StackPanel>
         </ScrollViewer>
 
-        <!-- Основное содержимое -->
         <Border Margin="10,133,10,10" CornerRadius="10" Background="White">
             <Grid MinHeight="300">
                 <ScrollViewer x:Name="scroll_main">
