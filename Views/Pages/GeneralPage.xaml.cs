@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -23,6 +24,24 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         public GeneralPage()
         {
             InitializeComponent();
+            BurgerMenu.OnClick += (s, a) =>
+            {
+                BurgerMenu.Opacity = 0;
+                DoubleAnimation borderAnimation = new DoubleAnimation();
+                borderAnimation.From = OpenedMeny.ActualWidth;
+                borderAnimation.To = 200;
+                borderAnimation.Duration = TimeSpan.FromSeconds(0.1);
+                OpenedMeny.BeginAnimation(Border.WidthProperty, borderAnimation);
+            };
+            OpenedMeny.OnClick += (s, a) =>
+            {
+                BurgerMenu.Opacity = 1;
+                DoubleAnimation borderAnimation = new DoubleAnimation();
+                borderAnimation.From = OpenedMeny.ActualWidth;
+                borderAnimation.To = 0;
+                borderAnimation.Duration = TimeSpan.FromSeconds(0.1);
+                OpenedMeny.BeginAnimation(Border.WidthProperty, borderAnimation);
+            };
         }
     }
 }

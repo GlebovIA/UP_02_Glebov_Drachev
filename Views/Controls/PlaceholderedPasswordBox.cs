@@ -4,7 +4,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Media;
 
-namespace UP_02_Glebov_Drachev.Views.Дерьмо
+namespace UP_02_Glebov_Drachev.Views.Controls
 {
     public class PlaceholderedPasswordBox : TextBox
     {

@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace UP_02_Glebov_Drachev.Views.Дерьмо
+namespace UP_02_Glebov_Drachev.Views.Controls
 {
     public partial class RoundButton : Border
     {

@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace UP_02_Glebov_Drachev.Views.Дерьмо
+namespace UP_02_Glebov_Drachev.Views.Controls
 {
     public class PlaceholderedTextBox : TextBox
     {

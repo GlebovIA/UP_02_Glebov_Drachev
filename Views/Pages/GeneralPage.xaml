@@ -4,16 +4,20 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:UP_02_Glebov_Drachev.Views.Pages"
-      xmlns:control="clr-namespace:UP_02_Glebov_Drachev.Views.Дерьмо"
+      xmlns:control="clr-namespace:UP_02_Glebov_Drachev.Views.Controls"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GeneralPage">
 
-    <Grid>
-        <control:MenuBorder Background="#FFc1c1c1" Margin="0, 20, 0, 0" Width="40" Height="50" CornerRadius="0, 25 25, 0" VerticalAlignment="Top" HorizontalAlignment="Left">
+    <Grid Background="#FF0060AC">
+        <control:MenuBorder x:Name="BurgerMenu" Background="#FFc1c1c1" Margin="0, 15, 0, 0" Width="40" Height="50" CornerRadius="0, 25 25, 0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <Grid>
-                
+                <Image Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" Source="pack://application:,,,/UP_02_Glebov_Drachev;component/Images/menu.png" />
             </Grid>
         </control:MenuBorder>
+        <control:OpenedMenuBorder x:Name="OpenedMeny" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
+        <Border x:Name="FrameBorder" BorderBrush="#FFC1C1C1" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Margin="210, 10, 10, 10">
+            <Frame x:Name="Frame" Background="White" NavigationUIVisibility="Hidden"/>
+        </Border>
     </Grid>
 </Page>

@@ -1,4 +1,4 @@
-﻿<Border x:Class="UP_02_Glebov_Drachev.Views.Дерьмо.RoundButton"
+﻿<Border x:Class="UP_02_Glebov_Drachev.Views.Controls.RoundButton"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         CornerRadius="10"
