@@ -6,7 +6,7 @@ namespace UP_02_Glebov_Drachev.Contexts
 {
     public class TeachersLoadContext : DbContext
     {
-        public DbSet<TeachersLoadModel> TeachersLoad { get; set; }
+        public DbSet<TeacherLoadsModel> TeachersLoad { get; set; }
         public TeachersLoadContext()
         {
             Database.EnsureCreated();

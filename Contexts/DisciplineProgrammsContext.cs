@@ -6,7 +6,7 @@ namespace UP_02_Glebov_Drachev.Contexts
 {
     public class DisciplineProgrammsContext : DbContext
     {
-        public DbSet<DisciplineProgrammsModel> DisciplineProgramms { get; set; }
+        public DbSet<DisciplineProgramsModel> DisciplineProgramms { get; set; }
         public DisciplineProgrammsContext()
         {
             Database.EnsureCreated();

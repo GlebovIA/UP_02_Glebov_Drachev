@@ -44,13 +44,16 @@ namespace UP_02_Glebov_Drachev.Views.Controls
 
         private void OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            Background = new SolidColorBrush(Colors.DarkGray);
+            // Более приятный оттенок для активного состояния
+            Background = new SolidColorBrush(Color.FromArgb(255, 240, 240, 240)); // Голубой цвет
         }
 
         private void OnMouseUp(object sender, MouseButtonEventArgs e)
         {
-            Background = new SolidColorBrush(Color.FromArgb(255, 193, 193, 193));
+            // Мягкий светло-серый цвет для неактивного состояния
+            Background = new SolidColorBrush(Color.FromArgb(255, 240, 240, 240)); // Светло-серый
         }
+
 
         public static readonly RoutedEvent ClickEvent =
             EventManager.RegisterRoutedEvent("OnClick", RoutingStrategy.Bubble, typeof(Mouse), typeof(MenuBorder));
