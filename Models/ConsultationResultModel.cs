@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UP_02_Glebov_Drachev.Models
+﻿namespace UP_02_Glebov_Drachev.Models
 {
     public class ConsultationResultsModel
     {
@@ -14,6 +8,14 @@ namespace UP_02_Glebov_Drachev.Models
         public bool Presence { get; set; }
         public string SubmittedPractice { get; set; }
 
+        public ConsultationResultsModel(int id, int consultationId, int studentId, bool presence, string submittedPractice)
+        {
+            Id = id;
+            ConsultationId = consultationId;
+            StudentId = studentId;
+            Presence = presence;
+            SubmittedPractice = submittedPractice;
+        }
     }
 
 }

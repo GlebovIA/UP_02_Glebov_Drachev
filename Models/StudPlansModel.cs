@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UP_02_Glebov_Drachev.Models
+﻿namespace UP_02_Glebov_Drachev.Models
 {
     public class StudPlansModel
     {
@@ -12,6 +6,13 @@ namespace UP_02_Glebov_Drachev.Models
         public int TeachersLoad { get; set; }
         public int PastLectureHours { get; set; }
         public int PastPracticeHours { get; set; }
-    }
 
+        public StudPlansModel(int id, int teachersLoad, int pastLectureHours, int pastPracticeHours)
+        {
+            Id = id;
+            TeachersLoad = teachersLoad;
+            PastLectureHours = pastLectureHours;
+            PastPracticeHours = pastPracticeHours;
+        }
+    }
 }

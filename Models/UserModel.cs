@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UP_02_Glebov_Drachev.Models
+﻿namespace UP_02_Glebov_Drachev.Models
 {
     public class UserModel
     {
@@ -13,7 +7,13 @@ namespace UP_02_Glebov_Drachev.Models
         public string Password { get; set; }
         public int Role { get; set; }
 
-
+        public UserModel(int id, string login, string password, int role)
+        {
+            Id = id;
+            Login = login;
+            Password = password;
+            Role = role;
+        }
     }
 
 }

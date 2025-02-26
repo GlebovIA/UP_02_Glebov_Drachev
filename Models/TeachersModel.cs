@@ -8,7 +8,14 @@
         public string Lastname { get; set; }
         public int UserId { get; set; }
 
-
+        public TeachersModel(int id, string surname, string name, string lastname, int userId)
+        {
+            Id = id;
+            Surname = surname;
+            Name = name;
+            Lastname = lastname;
+            UserId = userId;
+        }
     }
 
 }
