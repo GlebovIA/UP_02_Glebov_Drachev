@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System.Windows;
 
 namespace UP_02_Glebov_Drachev.Classes
@@ -18,11 +12,13 @@ namespace UP_02_Glebov_Drachev.Classes
             {
                 if (login != "" & pwd != "")
                 {
-                    Connection = new MySqlConnection($"server=127.0.0.1;database=UP_02_Glebov_Drachev;user=root;pwd=;port=3307");
+                    Connection = new MySqlConnection($"server=127.0.0.1;database=UP02;user=root;pwd=;port=3306");
+                    Connection.Open();
                     if (Query(Queries.CreateConnection(login, pwd)) != null)
                         return Connection;
                     else
-                        return null;
+                        MessageBox.Show("Неверный логин или пароль!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return null;
                 }
                 else
                 {
@@ -54,8 +50,8 @@ namespace UP_02_Glebov_Drachev.Classes
         }
         public static void CloseConnection()
         {
-            if(Connection != null && Connection.State == System.Data.ConnectionState.Open)
-            Connection.Close();
+            if (Connection != null && Connection.State == System.Data.ConnectionState.Open)
+                Connection.Close();
             MySqlConnection.ClearPool(Connection);
         }
         public static MySqlDataReader Query(string sql)
