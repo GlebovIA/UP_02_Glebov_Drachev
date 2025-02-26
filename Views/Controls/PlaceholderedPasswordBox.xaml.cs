@@ -1,14 +1,25 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
 namespace UP_02_Glebov_Drachev.Views.Controls
 {
-    public class PlaceholderedPasswordBox : TextBox
+    /// <summary>
+    /// Логика взаимодействия для PlaceholderedPasswordBox.xaml
+    /// </summary>
+    public partial class PlaceholderedPasswordBox : Border
     {
-        private TextBlock _placeholderTextBlock;
 
         public static readonly DependencyProperty RealPasswordProperty =
             DependencyProperty.Register("RealPassword", typeof(string), typeof(PlaceholderedPasswordBox), new PropertyMetadata(string.Empty));
@@ -21,39 +32,23 @@ namespace UP_02_Glebov_Drachev.Views.Controls
 
         public PlaceholderedPasswordBox()
         {
-            Loaded += OnLoaded;
-            TextChanged += OnTextChanged;
-        }
-
-        private void OnLoaded(object sender, RoutedEventArgs e)
-        {
-            // Создаем TextBlock для placeholder'а
-            _placeholderTextBlock = new TextBlock
-            {
-                Foreground = Brushes.Gray,
-                FontSize = 16,
-                VerticalAlignment = VerticalAlignment.Center,
-                Margin = new Thickness(12, 0, 0, 0),
-                IsHitTestVisible = false
-            };
-
+            InitializeComponent();
             // Привязываем текст placeholder'а к свойству PlaceHolder
             var binding = new Binding("PlaceHolder")
             {
                 Source = this
             };
-            _placeholderTextBlock.SetBinding(TextBlock.TextProperty, binding);
+            Placeholder.SetBinding(TextBlock.TextProperty, binding);
 
             // Добавляем placeholder в AdornerLayer
             var adornerLayer = AdornerLayer.GetAdornerLayer(this);
             if (adornerLayer != null)
             {
-                var adorner = new PlaceholderAdorner(this, _placeholderTextBlock);
+                var adorner = new PlaceholderAdorner(this, Placeholder);
                 adornerLayer.Add(adorner);
             }
-
-            // Обновляем видимость placeholder'а
             UpdatePlaceholderVisibility();
+            Password.TextChanged += OnTextChanged;
         }
 
         private void OnTextChanged(object sender, TextChangedEventArgs e)
@@ -68,29 +63,29 @@ namespace UP_02_Glebov_Drachev.Views.Controls
         private void MaskText()
         {
             // Если текст изменился, обновляем RealPassword
-            if (Text.Length > RealPassword.Length)
+            if (Password.Text.Length > RealPassword.Length)
             {
                 // Добавляем новый символ в RealPassword
-                RealPassword += Text[Text.Length - 1];
+                RealPassword += Password.Text[Password.Text.Length - 1];
             }
-            else if (Text.Length < RealPassword.Length)
+            else if (Password.Text.Length < RealPassword.Length)
             {
                 // Удаляем последний символ из RealPassword
-                RealPassword = RealPassword.Substring(0, Text.Length);
+                RealPassword = RealPassword.Substring(0, Password.Text.Length);
             }
 
             // Заменяем текст на звездочки
-            Text = new string('*', Text.Length);
+            Password.Text = new string('*', Password.Text.Length);
 
             // Устанавливаем курсор в конец текста
-            CaretIndex = Text.Length;
+            Password.CaretIndex = Password.Text.Length;
         }
 
         private void UpdatePlaceholderVisibility()
         {
-            if (_placeholderTextBlock != null)
+            if (Placeholder != null)
             {
-                _placeholderTextBlock.Visibility = string.IsNullOrEmpty(Text) ? Visibility.Visible : Visibility.Collapsed;
+                Placeholder.Visibility = string.IsNullOrEmpty(Password.Text) ? Visibility.Visible : Visibility.Collapsed;
             }
         }
 

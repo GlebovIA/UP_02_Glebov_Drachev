@@ -23,7 +23,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         {
             OpenPages(new GeneralPage());
         }
-        private void RegInClick(object sender, MouseButtonEventArgs e)
+        private void RegInClick(object sender, RoutedEventArgs e)
         {
 
         }

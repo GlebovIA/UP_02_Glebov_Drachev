@@ -28,7 +28,7 @@ namespace UP_02_Glebov_Drachev.Views.Controls
         {
             DoubleAnimation borderAnimation = new DoubleAnimation();
             borderAnimation.From = ActualWidth;
-            borderAnimation.To = 50;
+            borderAnimation.To = 60;
             borderAnimation.Duration = TimeSpan.FromSeconds(0.1);
             BeginAnimation(Border.WidthProperty, borderAnimation);
         }
@@ -37,7 +37,7 @@ namespace UP_02_Glebov_Drachev.Views.Controls
         {
             DoubleAnimation borderAnimation = new DoubleAnimation();
             borderAnimation.From = ActualWidth;
-            borderAnimation.To = 40;
+            borderAnimation.To = 50;
             borderAnimation.Duration = TimeSpan.FromSeconds(0.1);
             BeginAnimation(Border.WidthProperty, borderAnimation);
         }

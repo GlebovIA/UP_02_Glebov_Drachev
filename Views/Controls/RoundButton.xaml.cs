@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace UP_02_Glebov_Drachev.Views.Controls
 {
@@ -23,23 +24,25 @@ namespace UP_02_Glebov_Drachev.Views.Controls
             remove { BackButton.Click -= value; }
         }
 
-        // Событие MouseEnter
-        public event MouseEventHandler OnEnter
-        {
-            add { BackButton.MouseEnter += value; }
-            remove { BackButton.MouseEnter -= value; }
-        }
-
-        // Событие MouseLeave
-        public event MouseEventHandler OnLeave
-        {
-            add { BackButton.MouseLeave += value; }
-            remove { BackButton.MouseLeave -= value; }
-        }
-
         public RoundButton()
         {
             InitializeComponent();
+            MouseEnter += OnMouseEnter;
+            MouseLeave += OnMouseLeave;
+        }
+
+        private void OnMouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            BackButton.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 96, 172));
+            BackButton.FontWeight = FontWeights.Bold;
+            Background = new SolidColorBrush(Color.FromArgb(255, 193, 193, 193));
+        }
+
+        private void OnMouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            BackButton.Foreground = Brushes.White;
+            BackButton.FontWeight = FontWeights.Normal;
+            Background = new SolidColorBrush(Color.FromArgb(255, 228, 22, 19));
         }
 
         // Обработчик нажатия на кнопку
@@ -48,28 +51,8 @@ namespace UP_02_Glebov_Drachev.Views.Controls
             RaiseEvent(new RoutedEventArgs(ClickEvent, this));
         }
 
-        // Обработчик наведения мыши
-        private void MouseEnterHandler(object sender, MouseEventArgs e)
-        {
-            RaiseEvent(new MouseEventArgs(Mouse.PrimaryDevice, e.Timestamp) { RoutedEvent = EnterEvent });
-        }
-
-        // Обработчик вывода мыши
-        private void MouseLeaveHandler(object sender, MouseEventArgs e)
-        {
-            RaiseEvent(new MouseEventArgs(Mouse.PrimaryDevice, e.Timestamp) { RoutedEvent = LeaveEvent });
-        }
-
         // Регистрация события Click
         public static readonly RoutedEvent ClickEvent =
             EventManager.RegisterRoutedEvent("OnClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RoundButton));
-
-        // Регистрация события MouseEnter
-        public static readonly RoutedEvent EnterEvent =
-            EventManager.RegisterRoutedEvent("OnEnter", RoutingStrategy.Bubble, typeof(MouseEventHandler), typeof(RoundButton));
-
-        // Регистрация события MouseLeave
-        public static readonly RoutedEvent LeaveEvent =
-            EventManager.RegisterRoutedEvent("OnLeave", RoutingStrategy.Bubble, typeof(MouseEventHandler), typeof(RoundButton));
     }
 }

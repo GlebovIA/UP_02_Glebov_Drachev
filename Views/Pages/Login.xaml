@@ -28,68 +28,33 @@
                            Margin="0,0,0,20"/>
 
                 <!-- Поле для ввода логина -->
-                <Border CornerRadius="10" 
-                         Background="White" 
-                         BorderBrush="#ffc1c1c1" 
-                         BorderThickness="2" 
-                         Margin="0,0,0,20">
-                    <phTBx:PlaceholderedTextBox x:Name="LoginTextBox" 
-                              Width="300" 
-                              Height="40" 
-                              Padding="10" 
-                              FontSize="16" 
-                              Background="Transparent" 
-                              BorderThickness="0" 
-                              Foreground="Black"
-                              PlaceHolder="Логин"/>
-                </Border>
+
+                <phTBx:PlaceholderedTextBox x:Name="LoginTextBox" 
+                                Width="300" 
+                                PlaceHolder="Логин"
+                                            Margin="0, 0, 0, 10"/>
 
                 <!-- Поле для ввода пароля -->
-                <Border CornerRadius="10" 
-                    Background="White" 
-                    BorderBrush="#ffc1c1c1" 
-                    BorderThickness="2" 
-                    Margin="0,0,0,20">
-                    <phTBx:PlaceholderedPasswordBox x:Name="PasswordTextBox" 
+                <phTBx:PlaceholderedPasswordBox x:Name="PasswordTextBox" 
                                   Width="300" 
                                   Height="40" 
-                                  Padding="10" 
-                                  FontSize="16" 
-                                  Background="Transparent" 
-                                  BorderThickness="0" 
-                                  Foreground="Black"
-                                  PlaceHolder="Пароль"/>
-                    <!-- Установите placeholder -->
-                </Border>
+                                  PlaceHolder="Пароль"
+                                                Margin="0, 0, 0, 10"/>
 
                 <!-- Кнопки входа и регистрации -->
-                <Grid Margin="0,0,0,20">
-                    <phTBx:RoundButton Text="Вход" OnClick="SignInClick" OnEnter="ButtonEnter" OnLeave="ButtonLeave" HorizontalAlignment="Left"/>
-
-                    <Border CornerRadius="10" 
-                            Background="#FFE41613" 
-                            Width="150" 
-                            Height="40" 
-                            HorizontalAlignment="Right">
-                        <Button x:Name="RegInButton" 
-                                Content="Регистрация" 
-                                FontSize="16" 
-                                Background="Transparent" 
-                                Foreground="White" 
-                                BorderBrush="Transparent" 
-                                Cursor="Hand" 
-                                Padding="0"
-                                MouseDown="RegInClick"/>
-                    </Border>
+                <Grid>
+                    <phTBx:RoundButton Text="Вход" OnClick="SignInClick" HorizontalAlignment="Left"/>
+                    <phTBx:RoundButton Text="Регистрация" OnClick="RegInClick" HorizontalAlignment="Right"/>
                 </Grid>
 
                 <!-- Ссылка "Забыли пароль?" -->
                 <TextBlock Text="Забыли пароль?" 
-                           FontSize="14" 
-                           FontWeight="Bold" 
+                           FontSize="16"  
+                           FontFamily="Arial"
                            HorizontalAlignment="Center" 
                            Foreground="#FF0060AC"
-                           MouseDown="ForgotPassword"/>
+                           MouseDown="ForgotPassword"
+                           Margin="0, 10, 0, 0"/>
             </StackPanel>
         </Border>
     </Grid>

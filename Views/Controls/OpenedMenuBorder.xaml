@@ -4,12 +4,9 @@
         Width="0"
         BorderBrush="#FFC1C1C1" 
         BorderThickness="1"
-        Background="#FFF0F0F0"
-        Padding="10"
         VerticalAlignment="Stretch"
         HorizontalAlignment="Left">
-    <Grid Background="#FFF0F0F0">
-        <!-- Закрытие меню (кнопка X) -->
+    <Grid Background="White">
         <Border x:Name="BackButton" Width="50" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" 
                 Margin="15"
                 BorderBrush="#FF0060AC" BorderThickness="2" CornerRadius="15">
@@ -17,11 +14,22 @@
                    Source="pack://application:,,,/UP_02_Glebov_Drachev;component/Images/x.png"/>
         </Border>
 
-        <!-- Вкладки с прокруткой -->
-        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden" Margin="0, 80, 0, 15">
-            <StackPanel x:Name="TabParent" Orientation="Vertical">
-                <!-- Вкладки с данными будут добавляться сюда -->
-            </StackPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Hidden" Padding="0" Margin="0, 80, 0, 15">
+            <ListView x:Name="TabParent" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Stretch"  Padding="0" Margin="10, 0, 10, 0">
+                <ListView.Resources>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListViewItem">
+                                    <Border Background="Transparent">
+                                        <ContentPresenter/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.Resources>
+            </ListView>
         </ScrollViewer>
     </Grid>
 </Border>

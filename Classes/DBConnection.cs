@@ -11,15 +11,18 @@ namespace UP_02_Glebov_Drachev.Classes
 {
     public class DBConnection
     {
-        private static MySqlConnection Connection { get; set; }
-        public static MySqlConnection CreateConnection(string login, string pwd)
+        private static MySqlConnection? Connection { get; set; }
+        public static MySqlConnection? CreateConnection(string login, string pwd)
         {
             try
             {
                 if (login != "" & pwd != "")
                 {
                     Connection = new MySqlConnection($"server=127.0.0.1;database=UP_02_Glebov_Drachev;user=root;pwd=;port=3307");
-                    return Connection;
+                    if (Query(Queries.CreateConnection(login, pwd)) != null)
+                        return Connection;
+                    else
+                        return null;
                 }
                 else
                 {
@@ -32,11 +35,7 @@ namespace UP_02_Glebov_Drachev.Classes
                 return null;
             }
         }
-        public static void Disconnect()
-        {
-            Connection.Dispose();
-        }
-        public static MySqlConnection OpenConnection()
+        public static MySqlConnection? OpenConnection()
         {
             try
             {
@@ -55,6 +54,7 @@ namespace UP_02_Glebov_Drachev.Classes
         }
         public static void CloseConnection()
         {
+            if(Connection != null && Connection.State == System.Data.ConnectionState.Open)
             Connection.Close();
             MySqlConnection.ClearPool(Connection);
         }
