@@ -6,7 +6,7 @@
         Width="145"
         Height="40"
         Cursor="Hand">
-    <Button x:Name="BackButton"
+    <Label x:Name="BackButton"
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             Content="{Binding Text, RelativeSource={RelativeSource AncestorType=Border}}"
@@ -16,20 +16,6 @@
             Foreground="White"
             BorderBrush="Transparent"
             Cursor="Hand"
-            Padding="0"
-            Click="Click">
-        <Button.Resources>
-            <Style TargetType="Button">
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Border Background="Transparent">
-                                <ContentPresenter/>
-                            </Border>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-        </Button.Resources>
-    </Button>
+            Padding="0">
+    </Label>
 </Border>

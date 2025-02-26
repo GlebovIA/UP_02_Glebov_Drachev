@@ -3,15 +3,15 @@
     public class LessonModel
     {
         public int Id { get; set; }
-        public int DisciplineProgram { get; set; }
-        public int StudGroup { get; set; }
+        public int DisciplineProgramId { get; set; }
+        public int StudGroupId { get; set; }
         public DateTime Time { get; set; }
 
-        public LessonModel(int id, int disciplineProgram, int studGroup, DateTime time)
+        public LessonModel(int id, int disciplineProgramId, int studGroupId, DateTime time)
         {
             Id = id;
-            DisciplineProgram = disciplineProgram;
-            StudGroup = studGroup;
+            DisciplineProgramId = disciplineProgramId;
+            StudGroupId = studGroupId;
             Time = time;
         }
     }

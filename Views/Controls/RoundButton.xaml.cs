@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 
 namespace UP_02_Glebov_Drachev.Views.Controls
@@ -15,13 +14,6 @@ namespace UP_02_Glebov_Drachev.Views.Controls
         {
             get { return (string)GetValue(TextProperty); }
             set { SetValue(TextProperty, value); }
-        }
-
-        // Событие Click
-        public event RoutedEventHandler OnClick
-        {
-            add { BackButton.Click += value; }
-            remove { BackButton.Click -= value; }
         }
 
         public RoundButton()
@@ -44,15 +36,5 @@ namespace UP_02_Glebov_Drachev.Views.Controls
             BackButton.FontWeight = FontWeights.Normal;
             Background = new SolidColorBrush(Color.FromArgb(255, 228, 22, 19));
         }
-
-        // Обработчик нажатия на кнопку
-        private void Click(object sender, RoutedEventArgs e)
-        {
-            RaiseEvent(new RoutedEventArgs(ClickEvent, this));
-        }
-
-        // Регистрация события Click
-        public static readonly RoutedEvent ClickEvent =
-            EventManager.RegisterRoutedEvent("OnClick", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(RoundButton));
     }
 }

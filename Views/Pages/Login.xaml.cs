@@ -19,7 +19,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         {
 
         }
-        private void SignInClick(object sender, RoutedEventArgs e)
+        private void SignInClick(object sender, MouseButtonEventArgs e)
         {
             if (!string.IsNullOrEmpty(LoginTextBox.Text.Text) || !string.IsNullOrEmpty(PasswordTextBox.RealPassword))
             {
@@ -37,7 +37,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
                 MessageBox.Show("Поля логин и пароль должны быть заполнены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
-        private void RegInClick(object sender, RoutedEventArgs e)
+        private void RegInClick(object sender, MouseButtonEventArgs e)
         {
 
         }

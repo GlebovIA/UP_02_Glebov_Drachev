@@ -14,7 +14,7 @@ namespace UP_02_Glebov_Drachev.Classes
                 {
                     Connection = new MySqlConnection($"server=127.0.0.1;database=UP02;user=root;pwd=;port=3306");
                     Connection.Open();
-                    if (Query(Queries.CreateConnection(login, pwd)) != null)
+                    if (Query(Queries.CreateConnection(login, pwd)).HasRows)
                         return Connection;
                     else
                         MessageBox.Show("Неверный логин или пароль!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);

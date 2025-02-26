@@ -5,14 +5,14 @@
         public int Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-        public int Role { get; set; }
+        public int RoleId { get; set; }
 
-        public UserModel(int id, string login, string password, int role)
+        public UserModel(int id, string login, string password, int roleId)
         {
             Id = id;
             Login = login;
             Password = password;
-            Role = role;
+            RoleId = roleId;
         }
     }
 

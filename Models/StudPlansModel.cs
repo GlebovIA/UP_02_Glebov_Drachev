@@ -3,14 +3,14 @@
     public class StudPlansModel
     {
         public int Id { get; set; }
-        public int TeachersLoad { get; set; }
+        public int TeachersLoadId { get; set; }
         public int PastLectureHours { get; set; }
         public int PastPracticeHours { get; set; }
 
-        public StudPlansModel(int id, int teachersLoad, int pastLectureHours, int pastPracticeHours)
+        public StudPlansModel(int id, int teachersLoadId, int pastLectureHours, int pastPracticeHours)
         {
             Id = id;
-            TeachersLoad = teachersLoad;
+            TeachersLoadId = teachersLoadId;
             PastLectureHours = pastLectureHours;
             PastPracticeHours = pastPracticeHours;
         }

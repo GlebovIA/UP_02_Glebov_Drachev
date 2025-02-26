@@ -6,15 +6,15 @@
         public string Surname { get; set; }
         public string Name { get; set; }
         public string Lastname { get; set; }
-        public int User { get; set; }
+        public int UserId { get; set; }
 
-        public TeachersModel(int id, string surname, string name, string lastname, int user)
+        public TeachersModel(int id, string surname, string name, string lastname, int userId)
         {
             Id = id;
             Surname = surname;
             Name = name;
             Lastname = lastname;
-            User = user;
+            UserId = userId;
         }
     }
 

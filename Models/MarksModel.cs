@@ -5,17 +5,17 @@
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public string MarkValue { get; set; }
-        public int Lesson { get; set; }
-        public int Student { get; set; }
+        public int LessonId { get; set; }
+        public int StudentId { get; set; }
         public string Description { get; set; }
 
-        public MarksModel(int id, DateTime date, string markValue, int lesson, int student, string description)
+        public MarksModel(int id, DateTime date, string markValue, int lessonId, int studentId, string description)
         {
             Id = id;
             Date = date;
             MarkValue = markValue;
-            Lesson = lesson;
-            Student = student;
+            LessonId = lessonId;
+            StudentId = studentId;
             Description = description;
         }
     }
