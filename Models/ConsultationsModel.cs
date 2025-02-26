@@ -4,13 +4,13 @@
     public class ConsultationsModel
     {
         public int Id { get; set; }
-        public int DisciplineId { get; set; }
+        public int Discipline { get; set; }
         public DateTime Date { get; set; }
 
-        public ConsultationsModel(int id, int disciplineId, DateTime date)
+        public ConsultationsModel(int id, int discipline, DateTime date)
         {
             Id = id;
-            DisciplineId = disciplineId;
+            Discipline = discipline;
             Date = date;
         }
     }

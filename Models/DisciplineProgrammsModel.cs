@@ -3,17 +3,17 @@
     public class DisciplineProgramsModel
     {
         public int Id { get; set; }
-        public int DisciplineId { get; set; }
+        public int Discipline { get; set; }
         public string Theme { get; set; }
-        public int LessonTypeId { get; set; }
+        public int LessonType { get; set; }
         public int HoursCount { get; set; }
 
-        public DisciplineProgramsModel(int id, int disciplineId, string theme, int lessonTypeId, int hoursCount)
+        public DisciplineProgramsModel(int id, int discipline, string theme, int lessonType, int hoursCount)
         {
             Id = id;
-            DisciplineId = disciplineId;
+            Discipline = discipline;
             Theme = theme;
-            LessonTypeId = lessonTypeId;
+            LessonType = lessonType;
             HoursCount = hoursCount;
         }
     }
