@@ -9,6 +9,8 @@ namespace UP_02_Glebov_Drachev.Models
         public string Name { get; set; }
         public int TeacherId { get; set; }
 
+        public DisciplinesModel() { }
+
         public DisciplinesModel(int id, string name, int teacherId)
         {
             Id = id;
@@ -16,5 +18,4 @@ namespace UP_02_Glebov_Drachev.Models
             TeacherId = teacherId;
         }
     }
-
 }

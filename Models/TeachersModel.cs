@@ -8,6 +8,7 @@
         public string Lastname { get; set; }
         public int UserId { get; set; }
 
+        // Конструктор для обязательных параметров
         public TeachersModel(int id, string surname, string name, string lastname, int userId)
         {
             Id = id;
@@ -17,7 +18,7 @@
             UserId = userId;
         }
 
+        // Свойство для полного имени
         public string FullName => $"{Surname} {Name} {Lastname}";
     }
-
 }
