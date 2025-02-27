@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
+using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Pages;
 
 namespace UP_02_Glebov_Drachev.Views.Elements
@@ -16,7 +17,7 @@ namespace UP_02_Glebov_Drachev.Views.Elements
 
         private void RedacClick(object sender, MouseButtonEventArgs e)
         {
-            GeneralPage.SwapPages(new AbsencesPage());
+            GeneralPage.SwapPages(new AbsencesPage(DataContext as AbsencesModel));
         }
 
         private void DeleteClick(object sender, MouseButtonEventArgs e)

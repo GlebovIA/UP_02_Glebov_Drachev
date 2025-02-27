@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MySql.Data.MySqlClient;
 using UP_02_Glebov_Drachev.Classes;
 using UP_02_Glebov_Drachev.Models;
 
@@ -9,13 +10,12 @@ namespace UP_02_Glebov_Drachev.Contexts
         public DbSet<GroupsModel> Groups { get; set; }
         public GroupsContext()
         {
-            Database.EnsureCreated();
+            Database.MigrateAsync();
             Groups.Load();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySQL(DBConnection.OpenConnection());
-            DBConnection.CloseConnection();
+            optionsBuilder.UseMySQL(new MySqlConnection(DBConnection.ConnectionString));
         }
     }
 }

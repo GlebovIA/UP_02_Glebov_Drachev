@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
 using System.Data;
 using System.Windows;
 
@@ -8,6 +7,7 @@ namespace UP_02_Glebov_Drachev.Classes
     public static class DBConnection
     {
         public static MySqlConnection? Connection;
+        public static string ConnectionString = "server=127.0.0.1;database=UP02;user=root;pwd=;port=3307";
 
         public static MySqlConnection? CreateConnection(string login, string pwd)
         {
@@ -15,14 +15,13 @@ namespace UP_02_Glebov_Drachev.Classes
             {
                 if (!string.IsNullOrWhiteSpace(login) && !string.IsNullOrWhiteSpace(pwd))
                 {
-                    Connection = new MySqlConnection("server=127.0.0.1;database=UP02;user=root;pwd=;port=3307");
+                    Connection = new MySqlConnection(ConnectionString);
                     Connection.Open();
 
                     using (MySqlDataReader reader = Query(Queries.CreateConnection(login, pwd)))
                     {
                         if (reader.Read())  // Проверяем, есть ли хотя бы одна строка
                         {
-                            CloseConnection();
                             return Connection;
                         }
                         else
@@ -46,7 +45,7 @@ namespace UP_02_Glebov_Drachev.Classes
             }
         }
 
-        public static MySqlConnection? OpenConnection()
+        public static MySqlConnection OpenConnection()
         {
             try
             {
@@ -69,7 +68,6 @@ namespace UP_02_Glebov_Drachev.Classes
             if (Connection != null && Connection.State == ConnectionState.Open)
             {
                 Connection.Close();
-                MySqlConnection.ClearPool(Connection);
             }
         }
 

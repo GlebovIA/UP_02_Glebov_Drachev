@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MySql.Data.MySqlClient;
 using UP_02_Glebov_Drachev.Classes;
 using UP_02_Glebov_Drachev.Models;
 
@@ -9,13 +10,12 @@ namespace UP_02_Glebov_Drachev.Contexts
         public DbSet<StudentsModel> Students { get; set; }
         public StudentsContext()
         {
-            Database.EnsureCreated();
+            Database.MigrateAsync();
             Students.Load();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            DBConnection.CloseConnection();
-            optionsBuilder.UseMySQL(DBConnection.OpenConnection());
+            optionsBuilder.UseMySQL(new MySqlConnection(DBConnection.ConnectionString));
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,6 @@ namespace UP_02_Glebov_Drachev.Contexts
                 .HasOne(a => a.StudGroup)
                 .WithMany()
                 .HasForeignKey(a => a.StudGroupId);
-            DBConnection.CloseConnection();
         }
     }
 }

@@ -9,17 +9,17 @@
             <Label Content="Опоздания:" Foreground="#FF0060AC" FontSize="16" HorizontalAlignment="Left"/>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Дата:" Foreground="#FF0060AC" FontSize="14" HorizontalAlignment="Left"/>
-                <TextBox Text="{Binding Date, StringFormat=dd-MM-yyyy}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
+                <DatePicker SelectedDate="{Binding Date}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Студент:" Foreground="#FF0060AC" FontSize="14"/>
-                <TextBox Text="{Binding Student.FullName}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Stretch" Margin="5, 0"/>
+                <ComboBox x:Name="Students" DisplayMemberPath="FullName" SelectedValuePath="Id" SelectedValue="{Binding StudentId}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Stretch" Margin="5, 0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Дисциплина:" Foreground="#FF0060AC" FontSize="14"/>
-                <TextBox Text="{Binding Discipline.Name}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
+                <ComboBox x:Name="Disciplines" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding DisciplineId}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Stretch" Margin="5, 0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">

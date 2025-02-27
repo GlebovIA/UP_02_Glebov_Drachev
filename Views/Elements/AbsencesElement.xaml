@@ -37,7 +37,7 @@
 
             </StackPanel>
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" >
-                <phTBx:BlueRoundButton Text="Добавить" MouseLeftButtonDown="RedacClick"/>
+                <phTBx:BlueRoundButton Text="Изменить" MouseLeftButtonDown="RedacClick"/>
                 <phTBx:RoundButton Text="Удалить" MouseLeftButtonDown="DeleteClick" Margin="0, 20, 0, 0"/>
             </StackPanel>
         </Grid>
