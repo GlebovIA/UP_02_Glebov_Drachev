@@ -18,7 +18,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         public DisciplinesPage(DisciplinesModel disciplinesModel = null)
         {
             InitializeComponent();
-            AllDisciplines = new ObservableCollection<DisciplinesModel>(new DisciplinesContext().Disciplines.ToList());
+            AllDisciplines = new ObservableCollection<DisciplinesModel>(new DisciplinesContext().Disciplines.Include(d => d.Teacher).ToList());
 
             if (disciplinesModel != null)
             {

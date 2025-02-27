@@ -11,7 +11,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages
         public DisciplinesList()
         {
             InitializeComponent();
-            var disciplines = new DisciplinesContext().Disciplines.ToList();
+            var disciplines = new DisciplinesContext().Disciplines.Include(d => d.Teacher).ToList();
             List.ItemsSource = disciplines;
         }
     }
