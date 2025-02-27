@@ -1,29 +1,55 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Windows;
 using System.Windows.Controls;
-using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Contexts;
+using UP_02_Glebov_Drachev.Models;
+using UP_02_Glebov_Drachev.Views.Pages.EntityPages;
 
 namespace UP_02_Glebov_Drachev.Views.Pages
 {
     public partial class AbsencesPage : Page
     {
-        public ObservableCollection<AbsencesModel> AbsencesData { get; set; }
+        public IEnumerable<AbsencesModel> AbsencesData { get; set; }
+        public AbsencesContext AbsencesContext = new AbsencesContext();
+        private AbsencesModel Model { get; set; }
+        private bool IsUpdate { get; set; }
 
-        public AbsencesPage()
+        public AbsencesPage(AbsencesModel absencesModel = null)
         {
             InitializeComponent();
-            LoadAbsencesData();
-            this.DataContext = this;
+            if (absencesModel != null)
+            {
+                Model = AbsencesContext.Absences.FirstOrDefault(x => x.Id == absencesModel.Id);
+                IsUpdate = true;
+            }
+            else Model = new AbsencesModel();
         }
 
-        private void LoadAbsencesData()
+        private void Acept(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            // Загружаем данные о пропусках из базы данных
-            using (var context = new AbsencesContext())
+            try
             {
-                var absences = context.Absences.ToList();
-                AbsencesData = new ObservableCollection<AbsencesModel>(absences);
+                if (IsUpdate)
+                {
+                    AbsencesModel absence = AbsencesContext.Absences.FirstOrDefault(x => x.Id == Model.Id);
+                    absence = Model;
+                    AbsencesContext.SaveChanges();
+                }
+                else
+                {
+                    AbsencesContext.Absences.Add(Model);
+                    AbsencesContext.SaveChanges();
+                }
+                GeneralPage.SwapPages(new AbsencesList());
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Cancel(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            GeneralPage.SwapPages(new AbsencesList());
         }
     }
 }

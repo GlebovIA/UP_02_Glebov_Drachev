@@ -1,21 +1,41 @@
 ﻿<Page x:Class="UP_02_Glebov_Drachev.Views.Pages.AbsencesPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:local="clr-namespace:UP_02_Glebov_Drachev.Views.Elements"
+      xmlns:control="clr-namespace:UP_02_Glebov_Drachev.Views.Controls"
       Title="Пропуски занятий">
 
     <Grid>
-        <!-- Добавим панель для отображения списка пропусков -->
-        <ListView ItemsSource="{Binding AbsencesData}" Margin="10">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding Date}" Width="120"/>
-                    <GridViewColumn Header="Студент" DisplayMemberBinding="{Binding Student.FullName}" Width="200"/>
-                    <GridViewColumn Header="Дисциплина" DisplayMemberBinding="{Binding Discipline.Name}" Width="150"/>
-                    <GridViewColumn Header="Минуты опоздания" DisplayMemberBinding="{Binding DelayMinutes}" Width="150"/>
-                    <GridViewColumn Header="Объяснительная записка" DisplayMemberBinding="{Binding ExplanatoryNote}" Width="250"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <StackPanel>
+            <Label Content="Опоздания:" Foreground="#FF0060AC" FontSize="16" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Дата:" Foreground="#FF0060AC" FontSize="14" HorizontalAlignment="Left"/>
+                <TextBox Text="{Binding Date, StringFormat=dd-MM-yyyy}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Студент:" Foreground="#FF0060AC" FontSize="14"/>
+                <TextBox Text="{Binding Student.FullName}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Stretch" Margin="5, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Дисциплина:" Foreground="#FF0060AC" FontSize="14"/>
+                <TextBox Text="{Binding Discipline.Name}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Минуты опоздания:" Foreground="#FF0060AC" FontSize="14"/>
+                <TextBox Text="{Binding DelayMinutes}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Объяснительная записка:" Foreground="#FF0060AC" FontSize="14"/>
+                <TextBox Text="{Binding ExplanatoryNote}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
+            </StackPanel>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+            <control:BlueRoundButton Text="Принять" MouseLeftButtonDown="Acept"/>
+            <control:RoundButton Text="Отмена" MouseLeftButtonDown="Cancel" Margin="20, 0, 0, 0"/>
+        </StackPanel>
     </Grid>
 </Page>

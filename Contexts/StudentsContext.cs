@@ -23,6 +23,7 @@ namespace UP_02_Glebov_Drachev.Contexts
                 .HasOne(a => a.StudGroup)
                 .WithMany()
                 .HasForeignKey(a => a.StudGroupId);
+            DBConnection.CloseConnection();
         }
     }
 }

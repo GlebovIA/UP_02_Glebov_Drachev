@@ -11,7 +11,7 @@ namespace UP_02_Glebov_Drachev.Models
         public DateTime Date { get; set; }
         public int DelayMinutes { get; set; }
         public string ExplanatoryNote { get; set; }
-
+        public AbsencesModel() { }
         public AbsencesModel(int id, int studentId, int disciplineId, DateTime date, int delayMinutes, string explanatoryNote)
         {
             Id = id;
