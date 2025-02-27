@@ -14,11 +14,12 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         public ObservableCollection<DisciplinesModel> AllDisciplines { get; set; }
         private DisciplinesModel Model { get; set; }
         private bool IsUpdate { get; set; }
+        private DisciplinesContext DisciplinesContext { get; set; } = new DisciplinesContext();
 
         public DisciplinesPage(DisciplinesModel disciplinesModel = null)
         {
             InitializeComponent();
-            AllDisciplines = new ObservableCollection<DisciplinesModel>(new DisciplinesContext().Disciplines.Include(d => d.Teacher).ToList());
+            AllDisciplines = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines.Include(d => d.Teacher).ToList());
 
             if (disciplinesModel != null)
             {
@@ -30,6 +31,9 @@ namespace UP_02_Glebov_Drachev.Views.Pages
                 Model = new DisciplinesModel();
             }
 
+            // Привязка преподавателей через контекст DisciplinesContext
+            var teachers = DisciplinesContext.Disciplines.Select(d => d.Teacher).Distinct().ToList();
+            Teachers.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = teachers });
             DataContext = Model;
         }
 
@@ -39,14 +43,12 @@ namespace UP_02_Glebov_Drachev.Views.Pages
             {
                 if (IsUpdate)
                 {
-                    // Обновление существующей дисциплины
-                    new DisciplinesContext().SaveChanges();
+                    DisciplinesContext.SaveChanges();
                 }
                 else
                 {
-                    // Добавление новой дисциплины
-                    new DisciplinesContext().Disciplines.Add(Model);
-                    new DisciplinesContext().SaveChanges();
+                    DisciplinesContext.Disciplines.Add(Model);
+                    DisciplinesContext.SaveChanges();
                 }
                 GeneralPage.SwapPages(new DisciplinesList());
             }
@@ -61,4 +63,6 @@ namespace UP_02_Glebov_Drachev.Views.Pages
             GeneralPage.SwapPages(new DisciplinesList());
         }
     }
+
+
 }
