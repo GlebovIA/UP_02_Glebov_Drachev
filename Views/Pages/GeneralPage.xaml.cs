@@ -89,7 +89,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         private void SetAbsencesElement()
         {
             var absences = new AbsencesContext().Absences.Include(a => a.Student)
-                                              .ThenInclude(s => s.Group)
+                                              .ThenInclude(s => s.StudGroup)
                                               .Include(a => a.Discipline)
                                               .ToList();
             List.ItemsSource = absences;

@@ -20,7 +20,7 @@ namespace UP_02_Glebov_Drachev.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<StudentsModel>()
-                .HasOne(a => a.Group)
+                .HasOne(a => a.StudGroup)
                 .WithMany()
                 .HasForeignKey(a => a.StudGroupId);
         }

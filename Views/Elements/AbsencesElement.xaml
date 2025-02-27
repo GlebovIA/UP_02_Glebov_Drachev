@@ -10,7 +10,7 @@
             <TextBlock Text="{Binding Student.FullName}" Foreground="#FF9EA1A2" FontSize="14"/>
 
             <Label Content="Группа:" Foreground="#FF0060AC" FontSize="14"/>
-            <TextBlock Text="{Binding Student.Group.Name}" Foreground="#FF9EA1A2" FontSize="14"/>
+            <TextBlock Text="{Binding Student.StudGroup.Name}" Foreground="#FF9EA1A2" FontSize="14"/>
 
             <Label Content="Дисциплина:" Foreground="#FF0060AC" FontSize="14"/>
             <TextBlock Text="{Binding Discipline.Name}" Foreground="#FF9EA1A2" FontSize="14"/>

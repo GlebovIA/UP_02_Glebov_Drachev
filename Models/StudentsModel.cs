@@ -26,6 +26,6 @@ namespace UP_02_Glebov_Drachev.Models
             DateOfRemand = dateOfRemand;
             UserId = userId;
         }
-        public virtual GroupsModel Group { get; set; }
+        public virtual GroupsModel StudGroup { get; set; }
     }
 }
