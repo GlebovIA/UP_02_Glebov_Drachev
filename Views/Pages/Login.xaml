@@ -43,8 +43,8 @@
 
                 <!-- Кнопки входа и регистрации -->
                 <Grid>
-                    <phTBx:RoundButton Text="Вход" MouseDown="SignInClick" HorizontalAlignment="Left"/>
-                    <phTBx:RoundButton Text="Регистрация" MouseDown="RegInClick" HorizontalAlignment="Right"/>
+                    <phTBx:RoundButton Text="Вход" MouseLeftButtonDown="SignInClick" HorizontalAlignment="Left"/>
+                    <phTBx:RoundButton Text="Регистрация" MouseLeftButtonDown="RegInClick" HorizontalAlignment="Right"/>
                 </Grid>
 
                 <!-- Ссылка "Забыли пароль?" -->

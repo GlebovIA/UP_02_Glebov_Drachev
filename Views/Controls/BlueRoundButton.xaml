@@ -1,0 +1,21 @@
+﻿<Border x:Class="UP_02_Glebov_Drachev.Views.Controls.BlueRoundButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     CornerRadius="10"
+        Background="#FF0060ac"
+        Width="145"
+        Height="40"
+        Cursor="Hand">
+    <Label x:Name="BackButton"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Content="{Binding Text, RelativeSource={RelativeSource AncestorType=Border}}"
+            FontSize="16"
+            FontFamily="Arial"
+            Background="Transparent"
+            Foreground="White"
+            BorderBrush="Transparent"
+            Cursor="Hand"
+            Padding="0">
+    </Label>
+</Border>
