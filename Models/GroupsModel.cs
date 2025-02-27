@@ -1,5 +1,10 @@
-﻿namespace UP_02_Glebov_Drachev.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+
+namespace UP_02_Glebov_Drachev.Models
 {
+    [Table("StudGroups")]
     public class GroupsModel
     {
         public int Id { get; set; }

@@ -3,7 +3,8 @@
     public class TabModel
     {
         public string Title { get; set; }
-        public string Content { get; set; }
+        public object Content { get; set; }  // Изменено на object
         public bool IsFirst { get; set; }
     }
+
 }

@@ -1,5 +1,8 @@
-﻿namespace UP_02_Glebov_Drachev.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace UP_02_Glebov_Drachev.Models
 {
+    [Table("Disciplines")]
     public class DisciplinesModel
     {
         public int Id { get; set; }

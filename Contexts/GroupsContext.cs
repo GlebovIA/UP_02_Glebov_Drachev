@@ -14,6 +14,7 @@ namespace UP_02_Glebov_Drachev.Contexts
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            DBConnection.CloseConnection();
             optionsBuilder.UseMySQL(DBConnection.OpenConnection());
         }
     }

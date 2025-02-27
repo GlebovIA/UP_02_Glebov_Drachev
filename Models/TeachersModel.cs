@@ -16,6 +16,8 @@
             Lastname = lastname;
             UserId = userId;
         }
+
+        public string FullName => $"{Surname} {Name} {Lastname}";
     }
 
 }

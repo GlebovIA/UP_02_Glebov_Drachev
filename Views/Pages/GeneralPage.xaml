@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:UP_02_Glebov_Drachev.Views.Pages"
+      xmlns:local1="clr-namespace:UP_02_Glebov_Drachev.Views.Elements"
       xmlns:control="clr-namespace:UP_02_Glebov_Drachev.Views.Controls"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -65,7 +66,13 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 Margin="310, 10, 10, 10" Padding="5" Background="White">
-            <Frame x:Name="Frame" Background="White" NavigationUIVisibility="Hidden"/>
+            <ListView x:Name="List" Background="White">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <local1:AbsencesElement/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Border>
     </Grid>
 </Page>

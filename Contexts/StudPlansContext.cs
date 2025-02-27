@@ -7,7 +7,7 @@ namespace UP_02_Glebov_Drachev.Contexts
     public class StudPlansContext : DbContext
     {
         public DbSet<AbsencesModel> Absences { get; set; }
-        public AbsencesContext()
+        public void AbsencesContext()
         {
             Database.EnsureCreated();
             Absences.Load();

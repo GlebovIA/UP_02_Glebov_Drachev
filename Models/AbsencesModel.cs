@@ -1,5 +1,8 @@
-﻿namespace UP_02_Glebov_Drachev.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace UP_02_Glebov_Drachev.Models
 {
+    [Table("Absences")]
     public class AbsencesModel
     {
         public int Id { get; set; }
@@ -19,6 +22,8 @@
             ExplanatoryNote = explanatoryNote;
         }
 
+        public virtual StudentsModel Student { get; set; }
+        public virtual DisciplinesModel Discipline { get; set; }
     }
 
 }

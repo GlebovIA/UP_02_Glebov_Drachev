@@ -1,20 +1,25 @@
 ﻿<UserControl x:Class="UP_02_Glebov_Drachev.Views.Elements.AbsencesElement"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:UP_02_Glebov_Drachev.Views.Elements">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Border CornerRadius="5" Background="White" Margin="5" Padding="10">
         <StackPanel>
-            <Label Content="Дата:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
-            <TextBlock Text="{Binding Date}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel"/>
+            <Label Content="Дата:" Foreground="#FF0060AC" FontSize="14"/>
+            <TextBlock Text="{Binding Date, StringFormat=d}" Foreground="#FF9EA1A2" FontSize="14"/>
 
-            <Label Content="Дисциплина:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
-            <TextBlock Text="{Binding Discipline}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel"/>
+            <Label Content="Студент:" Foreground="#FF0060AC" FontSize="14"/>
+            <TextBlock Text="{Binding Student.FullName}" Foreground="#FF9EA1A2" FontSize="14"/>
 
-            <Label Content="Минуты пропуска:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
-            <TextBlock Text="{Binding Minutes}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel"/>
+            <Label Content="Группа:" Foreground="#FF0060AC" FontSize="14"/>
+            <TextBlock Text="{Binding Student.Group.Name}" Foreground="#FF9EA1A2" FontSize="14"/>
 
-            <Label Content="Объяснительная записка:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
-            <TextBlock Text="{Binding ExplanatoryNote}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel"/>
+            <Label Content="Дисциплина:" Foreground="#FF0060AC" FontSize="14"/>
+            <TextBlock Text="{Binding Discipline.Name}" Foreground="#FF9EA1A2" FontSize="14"/>
+
+            <Label Content="Минуты опоздания:" Foreground="#FF0060AC" FontSize="14"/>
+            <TextBlock Text="{Binding DelayMinutes}" Foreground="#FF9EA1A2" FontSize="14"/>
+
+            <Label Content="Объяснительная записка:" Foreground="#FF0060AC" FontSize="14"/>
+            <TextBlock Text="{Binding ExplanatoryNote}" Foreground="#FF9EA1A2" FontSize="14"/>
         </StackPanel>
     </Border>
 </UserControl>

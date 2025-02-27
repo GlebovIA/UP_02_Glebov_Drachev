@@ -14,7 +14,15 @@ namespace UP_02_Glebov_Drachev.Contexts
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            DBConnection.CloseConnection();
             optionsBuilder.UseMySQL(DBConnection.OpenConnection());
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<StudentsModel>()
+                .HasOne(a => a.Group)
+                .WithMany()
+                .HasForeignKey(a => a.StudGroupId);
         }
     }
 }

@@ -14,8 +14,11 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.EntityFrameworkCore;
+using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Controls;
+using UP_02_Glebov_Drachev.Views.Elements;
 
 namespace UP_02_Glebov_Drachev.Views.Pages
 {
@@ -27,6 +30,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         public GeneralPage()
         {
             InitializeComponent();
+            SetAbsencesElement();
             BurgerMenu.OnClick += (s, a) =>
             {
                 BurgerMenu.Opacity = 0;
@@ -50,28 +54,25 @@ namespace UP_02_Glebov_Drachev.Views.Pages
 
         private ObservableCollection<TabElement> GetDataFromDatabase()
         {
-            // Имитация запроса данных из базы данных
             ObservableCollection<TabElement> tabs = new ObservableCollection<TabElement>
-            {
-                new TabElement ( new TabModel() { Title = "Пропуски занятий", Content = GetAbsencesData(), IsFirst = true } ),
-                new TabElement ( new TabModel() { Title = "Результаты консультаций", Content = GetConsultationResultsData() } ),
-                new TabElement ( new TabModel() { Title = "Консультации", Content = GetConsultationsData() } ),
-                new TabElement ( new TabModel() { Title = "Программы дисциплин", Content = GetDisciplineProgramsData() } ),
-                new TabElement ( new TabModel() { Title = "Дисциплины", Content = GetDisciplinesData() } ),
-                new TabElement ( new TabModel() { Title = "Группы", Content = GetGroupsData() } ),
-                new TabElement ( new TabModel() { Title = "Типы занятий", Content = GetLessonTypesData() } ),
-                new TabElement ( new TabModel() { Title = "Оценки", Content = GetMarksData() } ),
-                new TabElement ( new TabModel() { Title = "Роли", Content = GetRolesData() } ),
-                new TabElement ( new TabModel() { Title = "Студенты", Content = GetStudentsData() } ),
-                new TabElement ( new TabModel() { Title = "Учебные планы", Content = GetStudPlansData() } ),
-                new TabElement ( new TabModel() { Title = "Преподавательские нагрузки", Content = GetTeachersLoadData() } ),
-                new TabElement ( new TabModel() { Title = "Преподаватели", Content = GetTeachersData() } )
-            };
+    {
+        new TabElement(new TabModel() { Title = "Пропуски занятий", Content = "", IsFirst = true }) {  },
+        new TabElement(new TabModel() { Title = "Результаты консультаций", Content = GetConsultationResultsData() }),
+        new TabElement(new TabModel() { Title = "Консультации", Content = GetConsultationsData() }),
+        new TabElement(new TabModel() { Title = "Программы дисциплин", Content = GetDisciplineProgramsData() }),
+        new TabElement(new TabModel() { Title = "Дисциплины", Content = GetDisciplinesData() }),
+        new TabElement(new TabModel() { Title = "Группы", Content = GetGroupsData() }),
+        new TabElement(new TabModel() { Title = "Типы занятий", Content = GetLessonTypesData() }),
+        new TabElement(new TabModel() { Title = "Оценки", Content = GetMarksData() }),
+        new TabElement(new TabModel() { Title = "Роли", Content = GetRolesData() }),
+        new TabElement(new TabModel() { Title = "Студенты", Content = GetStudentsData() }),
+        new TabElement(new TabModel() { Title = "Учебные планы", Content = GetStudPlansData() }),
+        new TabElement(new TabModel() { Title = "Преподавательские нагрузки", Content = GetTeachersLoadData() }),
+        new TabElement(new TabModel() { Title = "Преподаватели", Content = GetTeachersData() })
+    };
             return tabs;
         }
 
-        // Пример данных для каждой вкладки
-        private string GetAbsencesData() => "Список отсутствующих студентов...";
         private string GetConsultationResultsData() => "Результаты консультаций...";
         private string GetConsultationsData() => "Данные по консультациям...";
         private string GetDisciplineProgramsData() => "Программы дисциплин...";
@@ -84,5 +85,16 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         private string GetStudPlansData() => "Учебные планы...";
         private string GetTeachersLoadData() => "Данные о нагрузке преподавателей...";
         private string GetTeachersData() => "Список преподавателей...";
+
+        private void SetAbsencesElement()
+        {
+            var absences = new AbsencesContext().Absences.Include(a => a.Student)
+                                              .ThenInclude(s => s.Group)
+                                              .Include(a => a.Discipline)
+                                              .ToList();
+            List.ItemsSource = absences;
+        }
+
+
     }
 }
