@@ -3,23 +3,67 @@
 namespace UP_02_Glebov_Drachev.Models
 {
     [Table("Absences")]
-    public class AbsencesModel
+    public class AbsencesModel : BaseModel
     {
-        public int Id { get; set; }
-        public int StudentId { get; set; }
-        public int DisciplineId { get; set; }
-        public DateTime Date { get; set; }
-        public int DelayMinutes { get; set; }
-        public string ExplanatoryNote { get; set; }
-        public AbsencesModel() { }
-        public AbsencesModel(int id, int studentId, int disciplineId, DateTime date, int delayMinutes, string explanatoryNote)
+        private int _id;
+        private int _studentId;
+        private int _disciplineId;
+        private DateTime _date;
+        private int _delayMinutes;
+        private string _explanatoryNote;
+        public int Id
         {
-            Id = id;
-            StudentId = studentId;
-            DisciplineId = disciplineId;
-            Date = date;
-            DelayMinutes = delayMinutes;
-            ExplanatoryNote = explanatoryNote;
+            get { return _id; }
+            set
+            {
+                _id = value;
+                OnPropertyChanged(nameof(Id));
+            }
+        }
+        public int StudentId
+        {
+            get { return _studentId; }
+            set
+            {
+                _studentId = value;
+                OnPropertyChanged(nameof(StudentId));
+            }
+        }
+        public int DisciplineId
+        {
+            get { return _disciplineId; }
+            set
+            {
+                _disciplineId = value;
+                OnPropertyChanged(nameof(DisciplineId));
+            }
+        }
+        public DateTime Date
+        {
+            get { return _date; }
+            set
+            {
+                _date = value;
+                OnPropertyChanged(nameof(Date));
+            }
+        }
+        public int DelayMinutes
+        {
+            get { return _delayMinutes; }
+            set
+            {
+                _delayMinutes = value;
+                OnPropertyChanged(nameof(DelayMinutes));
+            }
+        }
+        public string ExplanatoryNote
+        {
+            get { return _explanatoryNote; }
+            set
+            {
+                _explanatoryNote = value;
+                OnPropertyChanged(nameof(ExplanatoryNote));
+            }
         }
 
         public virtual StudentsModel Student { get; set; }

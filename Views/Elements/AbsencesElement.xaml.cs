@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Input;
+using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Pages;
 
@@ -10,14 +11,19 @@ namespace UP_02_Glebov_Drachev.Views.Elements
     /// </summary>
     public partial class AbsencesElement : UserControl
     {
-        public AbsencesElement()
+        public AbsencesModel Model { get; set; }
+        public AbsencesContext Context { get; set; }
+        public AbsencesElement(AbsencesModel model, AbsencesContext context)
         {
             InitializeComponent();
+            Model = model;
+            Context = context;
+            DataContext = Model;
         }
 
         private void RedacClick(object sender, MouseButtonEventArgs e)
         {
-            GeneralPage.SwapPages(new AbsencesPage(DataContext as AbsencesModel));
+            GeneralPage.SwapPages(new AbsencesPage(Context, Model));
         }
 
         private void DeleteClick(object sender, MouseButtonEventArgs e)

@@ -10,7 +10,7 @@ namespace UP_02_Glebov_Drachev.Contexts
         public DbSet<AbsencesModel> Absences { get; set; }
         public AbsencesContext()
         {
-            Database.MigrateAsync();
+            Database.Migrate();
             Absences.Load();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

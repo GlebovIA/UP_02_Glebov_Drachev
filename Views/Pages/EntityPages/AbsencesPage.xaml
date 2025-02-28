@@ -24,12 +24,12 @@
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Минуты опоздания:" Foreground="#FF0060AC" FontSize="14"/>
-                <TextBox Text="{Binding DelayMinutes}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
+                <TextBox Text="{Binding DelayMinutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Объяснительная записка:" Foreground="#FF0060AC" FontSize="14"/>
-                <TextBox Text="{Binding ExplanatoryNote}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
+                <TextBox Text="{Binding ExplanatoryNote, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
             </StackPanel>
 
         </StackPanel>
