@@ -3,24 +3,33 @@
 namespace UP_02_Glebov_Drachev.Models
 {
     [Table("Disciplines")]
-    public class DisciplinesModel
+    public class DisciplinesModel : BaseModel
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int TeacherId { get; set; }
+        private string _name;
+        private int _teacherId;
 
-        // Конструктор без параметров
-        public DisciplinesModel() { }
+        public int Id { get; set; }  // Ensure this property is present if not inherited from BaseModel
 
-        // Конструктор с параметрами
-        public DisciplinesModel(int id, string name, int teacherId)
+        public string Name
         {
-            Id = id;
-            Name = name;
-            TeacherId = teacherId;
+            get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged(nameof(Name));
+            }
         }
 
-        // Свойство для навигации
+        public int TeacherId
+        {
+            get { return _teacherId; }
+            set
+            {
+                _teacherId = value;
+                OnPropertyChanged(nameof(TeacherId));
+            }
+        }
+
         public virtual TeachersModel Teacher { get; set; }
     }
 }

@@ -6,15 +6,20 @@
 
     <Grid>
         <StackPanel>
-            <Label Content="Дисциплина:" Foreground="#FF0060AC" FontSize="16" HorizontalAlignment="Left"/>
-            <TextBox Text="{Binding Name}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
+            <Label Content="Дисциплины:" Foreground="#FF0060AC" FontSize="16" HorizontalAlignment="Left"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Название:" Foreground="#FF0060AC" FontSize="14" HorizontalAlignment="Left"/>
+                <TextBox Text="{Binding Name}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
+            </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Преподаватель:" Foreground="#FF0060AC" FontSize="14"/>
-                <ComboBox x:Name="Teachers" DisplayMemberPath="FullName" SelectedValuePath="Id" SelectedValue="{Binding TeacherId}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Stretch" Margin="5, 0"/>
+                <ComboBox x:Name="Teachers" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding TeacherId}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Stretch" Margin="5, 0"/>
             </StackPanel>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
             <control:BlueRoundButton Text="Принять" MouseLeftButtonDown="Accept"/>
             <control:RoundButton Text="Отмена" MouseLeftButtonDown="Cancel" Margin="20, 0, 0, 0"/>
         </StackPanel>

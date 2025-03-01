@@ -6,6 +6,7 @@ using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Reporting;
 using UP_02_Glebov_Drachev.Views.Controls;
 using UP_02_Glebov_Drachev.Views.Pages.EntityPages;
+using UP_02_Glebov_Drachev.Contexts;
 
 namespace UP_02_Glebov_Drachev.Views.Pages
 {
@@ -15,10 +16,13 @@ namespace UP_02_Glebov_Drachev.Views.Pages
     public partial class GeneralPage : Page
     {
         private static Frame pagesFrame { get; set; }
+
         public GeneralPage()
         {
             InitializeComponent();
             pagesFrame = PagesFrame;
+
+            // Обработчик клика по бургер-меню
             BurgerMenu.OnClick += (s, a) =>
             {
                 BurgerMenu.Opacity = 0;
@@ -28,6 +32,8 @@ namespace UP_02_Glebov_Drachev.Views.Pages
                 borderAnimation.Duration = TimeSpan.FromSeconds(0.15);
                 OpenedMeny.BeginAnimation(Border.WidthProperty, borderAnimation);
             };
+
+            // Обработчик клика по раскрытому меню
             OpenedMeny.OnClick += (s, a) =>
             {
                 BurgerMenu.Opacity = 1;
@@ -37,6 +43,8 @@ namespace UP_02_Glebov_Drachev.Views.Pages
                 borderAnimation.Duration = TimeSpan.FromSeconds(0.15);
                 OpenedMeny.BeginAnimation(Border.WidthProperty, borderAnimation);
             };
+
+            // Устанавливаем элементы меню
             OpenedMeny.SetItems(GetDataFromDatabase());
         }
 
@@ -84,10 +92,12 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         {
             SwapPages(new AbsencesList());
         }
+
         private void SetConsultationsElement()
         {
             SwapPages(new ConsultationsList());
         }
+
         private void SetDisciplinesElement()
         {
             SwapPages(new DisciplinesList());

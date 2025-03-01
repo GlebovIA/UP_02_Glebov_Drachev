@@ -1,31 +1,30 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
-using UP_02_Glebov_Drachev.Views.Pages.EntityPages;
+using UP_02_Glebov_Drachev.Views.Elements;
 
 namespace UP_02_Glebov_Drachev.Views.Pages
 {
     public partial class DisciplinesPage : Page
     {
-        public ObservableCollection<DisciplinesModel> AllDisciplines { get; set; }
+        private DisciplinesContext DisciplinesContext { get; set; }
+        private ObservableCollection<DisciplinesModel> AllDisciplines { get; set; }
         private DisciplinesModel Model { get; set; }
         private bool IsUpdate { get; set; }
-        private DisciplinesContext DisciplinesContext { get; set; } = new DisciplinesContext();
 
-        public DisciplinesPage(DisciplinesModel disciplinesModel = null)
+        public DisciplinesPage(DisciplinesContext context, DisciplinesModel disciplinesModel = null)
         {
             InitializeComponent();
-            AllDisciplines = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines.Include(d => d.Teacher).ToList());
+            DisciplinesContext = context;
+            AllDisciplines = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines.ToList());
 
             if (disciplinesModel != null)
             {
-                Model = disciplinesModel;
+                Model = DisciplinesContext.Disciplines.FirstOrDefault(x => x.Id == disciplinesModel.Id);
                 IsUpdate = true;
             }
             else
@@ -33,26 +32,23 @@ namespace UP_02_Glebov_Drachev.Views.Pages
                 Model = new DisciplinesModel();
             }
 
-            // Привязка преподавателей через контекст DisciplinesContext
-            var teachers = DisciplinesContext.Disciplines.Select(d => d.Teacher).Distinct().ToList();
-            Teachers.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = teachers });
+            // Binding teacher data
+            Teachers.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = GetTeachersData() });
             DataContext = Model;
+        }
+
+        private ObservableCollection<TeachersModel> GetTeachersData()
+        {
+            // Assume you have a TeachersContext to load the teachers
+            return new ObservableCollection<TeachersModel>(new TeachersContext().Teachers.ToList());
         }
 
         private void Accept(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             try
             {
-                if (IsUpdate)
-                {
-                    DisciplinesContext.SaveChanges();
-                }
-                else
-                {
-                    DisciplinesContext.Disciplines.Add(Model);
-                    DisciplinesContext.SaveChanges();
-                }
-                GeneralPage.SwapPages(new DisciplinesList());
+                DisciplinesContext.SaveChanges();
+                // Navigate to another page after saving changes
             }
             catch (Exception ex)
             {
@@ -62,9 +58,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
 
         private void Cancel(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            GeneralPage.SwapPages(new DisciplinesList());
+            // Cancel the changes
         }
     }
-
-
 }

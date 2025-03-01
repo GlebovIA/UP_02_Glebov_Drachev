@@ -6,16 +6,16 @@
         <Grid>
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Дисциплина:" Foreground="#FF0060AC" FontSize="14" HorizontalAlignment="Left"/>
+                    <Label Content="Название:" Foreground="#FF0060AC" FontSize="14" HorizontalAlignment="Left"/>
                     <TextBlock Text="{Binding Name}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5, 0"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Преподаватель:" Foreground="#FF0060AC" FontSize="14"/>
-                    <TextBlock Text="{Binding Teacher.FullName}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5, 0"/>
+                    <TextBlock Text="{Binding Teacher.Name}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5, 0"/>
                 </StackPanel>
             </StackPanel>
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" >
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right">
                 <phTBx:BlueRoundButton Text="Изменить" MouseLeftButtonDown="RedacClick"/>
                 <phTBx:RoundButton Text="Удалить" MouseLeftButtonDown="DeleteClick" Margin="0, 20, 0, 0"/>
             </StackPanel>

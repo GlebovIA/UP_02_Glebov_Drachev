@@ -8,6 +8,7 @@ namespace UP_02_Glebov_Drachev.Contexts
     public class DisciplinesContext : DbContext
     {
         public DbSet<DisciplinesModel> Disciplines { get; set; }
+        public DbSet<TeachersModel> Teachers { get; set; }  // Добавьте эту строку
 
         public DisciplinesContext()
         {
