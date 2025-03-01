@@ -13,20 +13,23 @@ namespace UP_02_Glebov_Drachev.Views.Pages
 {
     public partial class ConsultationsPage : Page
     {
-        public ConsultationsContext ConsultationsContext = new ConsultationsContext();
-        public DisciplinesContext DisciplinesContext = new DisciplinesContext();
+        public ConsultationsContext ConsultationsContext { get; set; }
+        public DisciplinesContext DisciplinesContext { get; set; }
         public ObservableCollection<DisciplinesModel> AllDisciplines { get; set; }
         private ConsultationsModel Model { get; set; }
         private bool IsUpdate { get; set; }
 
-        public ConsultationsPage(ConsultationsModel consultationsModel = null)
+        public ConsultationsPage(ConsultationsContext context, ConsultationsModel consultationsModel = null)
         {
             InitializeComponent();
+            ConsultationsContext = context;
+            DisciplinesContext = new DisciplinesContext();
             AllDisciplines = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines.ToList());
 
             if (consultationsModel != null)
             {
-                Model = ConsultationsContext.Consultations
+                // Используем переданный контекст для поиска консультации
+                Model = context.Consultations
                     .Include(c => c.Discipline)  // Включаем связанную сущность Discipline
                     .FirstOrDefault(x => x.Id == consultationsModel.Id);
                 IsUpdate = true;
@@ -36,6 +39,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
                 Model = new ConsultationsModel();
             }
 
+            // Привязка дисциплин к ComboBox
             Disciplines.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = AllDisciplines });
             DataContext = Model;
         }
@@ -44,6 +48,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         {
             try
             {
+                // Сохраняем изменения
                 ConsultationsContext.SaveChanges();
                 GeneralPage.SwapPages(new ConsultationsList());
             }
@@ -55,6 +60,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
 
         private void Cancel(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            // Отменяем изменения и возвращаемся к списку консультаций
             GeneralPage.SwapPages(new ConsultationsList());
         }
     }

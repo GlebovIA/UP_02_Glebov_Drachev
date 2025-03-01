@@ -1,15 +1,45 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UP_02_Glebov_Drachev.Models
 {
-    public class ConsultationsModel
+    [Table("Consultations")]
+    public class ConsultationsModel : BaseModel
     {
-        public int Id { get; set; }
-        public int DisciplineId { get; set; }  // Внешний ключ
+        private int _id;
+        private int _disciplineId;
+        private DateTime _date;
 
-        public DateTime Date { get; set; }
+        public int Id
+        {
+            get { return _id; }
+            set
+            {
+                _id = value;
+                OnPropertyChanged(nameof(Id));
+            }
+        }
 
-        // Навигационное свойство для загрузки данных Discipline
-        public DisciplinesModel Discipline { get; set; }
+        public int DisciplineId
+        {
+            get { return _disciplineId; }
+            set
+            {
+                _disciplineId = value;
+                OnPropertyChanged(nameof(DisciplineId));
+            }
+        }
+
+        public DateTime Date
+        {
+            get { return _date; }
+            set
+            {
+                _date = value;
+                OnPropertyChanged(nameof(Date));
+            }
+        }
+
+        public virtual DisciplinesModel Discipline { get; set; }
     }
 }

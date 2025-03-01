@@ -10,6 +10,7 @@ namespace UP_02_Glebov_Drachev.Views.Elements
     {
         public ConsultationsModel Model { get; set; }
         public ConsultationsContext Context { get; set; }
+
         public ConsultationsElement(ConsultationsModel model, ConsultationsContext context)
         {
             InitializeComponent();
@@ -20,12 +21,13 @@ namespace UP_02_Glebov_Drachev.Views.Elements
 
         private void RedacClick(object sender, MouseButtonEventArgs e)
         {
+            // Передаем контекст и модель консультации в конструктор страницы
             GeneralPage.SwapPages(new ConsultationsPage(Context, Model));
         }
 
         private void DeleteClick(object sender, MouseButtonEventArgs e)
         {
-
+            // Добавьте логику для удаления записи, если нужно
         }
     }
 }
