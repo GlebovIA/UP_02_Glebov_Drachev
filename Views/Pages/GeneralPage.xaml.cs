@@ -1,7 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using UP_02_Glebov_Drachev.Models;
+using UP_02_Glebov_Drachev.Reporting;
 using UP_02_Glebov_Drachev.Views.Controls;
 using UP_02_Glebov_Drachev.Views.Pages.EntityPages;
 
@@ -46,21 +48,22 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         private ObservableCollection<TabElement> GetDataFromDatabase()
         {
             ObservableCollection<TabElement> tabs = new ObservableCollection<TabElement>
-    {
-        new TabElement(new TabModel() { Title = "Пропуски занятий", Content = "", IsFirst = true }, (s, a) => SetAbsencesElement()),
-        new TabElement(new TabModel() { Title = "Результаты консультаций", Content = GetConsultationResultsData() }, (s, a) => SetAbsencesElement()),
-        new TabElement(new TabModel() { Title = "Консультации", Content = GetConsultationsData() }, (s, a) => SetConsultationsElement()),
-        new TabElement(new TabModel() { Title = "Программы дисциплин", Content = GetDisciplineProgramsData() }, (s, a) => SetAbsencesElement()),
-        new TabElement(new TabModel() { Title = "Дисциплины", Content = GetDisciplinesData() }, (s, a) => SetDisciplinesElement()),
-        new TabElement(new TabModel() { Title = "Группы", Content = GetGroupsData() }, (s, a) => SetAbsencesElement()),
-        new TabElement(new TabModel() { Title = "Типы занятий", Content = GetLessonTypesData() }, (s, a) => SetAbsencesElement()),
-        new TabElement(new TabModel() { Title = "Оценки", Content = GetMarksData() }, (s, a) => SetAbsencesElement()),
-        new TabElement(new TabModel() { Title = "Роли", Content = GetRolesData() }, (s, a) => SetAbsencesElement()),
-        new TabElement(new TabModel() { Title = "Студенты", Content = GetStudentsData() }, (s, a) => SetAbsencesElement()),
-        new TabElement(new TabModel() { Title = "Учебные планы", Content = GetStudPlansData() }, (s, a) => SetAbsencesElement()),
-        new TabElement(new TabModel() { Title = "Преподавательские нагрузки", Content = GetTeachersLoadData() }, (s, a) => SetAbsencesElement()),
-        new TabElement(new TabModel() { Title = "Преподаватели", Content = GetTeachersData() }, (s, a) => SetAbsencesElement())
-    };
+            {
+                new TabElement(new TabModel() { Title = "Пропуски занятий", Content = "", IsFirst = true }, (s, a) => SetAbsencesElement()),
+                new TabElement(new TabModel() { Title = "Результаты консультаций", Content = GetConsultationResultsData() }, (s, a) => SetAbsencesElement()),
+                new TabElement(new TabModel() { Title = "Консультации", Content = GetConsultationsData() }, (s, a) => SetConsultationsElement()),
+                new TabElement(new TabModel() { Title = "Программы дисциплин", Content = GetDisciplineProgramsData() }, (s, a) => SetAbsencesElement()),
+                new TabElement(new TabModel() { Title = "Дисциплины", Content = GetDisciplinesData() }, (s, a) => SetDisciplinesElement()),
+                new TabElement(new TabModel() { Title = "Группы", Content = GetGroupsData() }, (s, a) => SetAbsencesElement()),
+                new TabElement(new TabModel() { Title = "Типы занятий", Content = GetLessonTypesData() }, (s, a) => SetAbsencesElement()),
+                new TabElement(new TabModel() { Title = "Оценки", Content = GetMarksData() }, (s, a) => SetAbsencesElement()),
+                new TabElement(new TabModel() { Title = "Роли", Content = GetRolesData() }, (s, a) => SetAbsencesElement()),
+                new TabElement(new TabModel() { Title = "Студенты", Content = GetStudentsData() }, (s, a) => SetAbsencesElement()),
+                new TabElement(new TabModel() { Title = "Учебные планы", Content = GetStudPlansData() }, (s, a) => SetAbsencesElement()),
+                new TabElement(new TabModel() { Title = "Преподавательские нагрузки", Content = GetTeachersLoadData() }, (s, a) => SetAbsencesElement()),
+                new TabElement(new TabModel() { Title = "Преподаватели", Content = GetTeachersData() }, (s, a) => SetAbsencesElement()),
+                new TabElement(new TabModel() { Title = "Отчет по опозданиям", Content = GetTeachersData() }, (s, a) => AbsenceReport.GenerateReport())
+            };
             return tabs;
         }
 

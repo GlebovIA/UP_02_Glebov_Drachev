@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -12,7 +13,6 @@ namespace UP_02_Glebov_Drachev.Views.Pages
 {
     public partial class ConsultationsPage : Page
     {
-        public IEnumerable<ConsultationsModel> ConsultationsData { get; set; }
         public ConsultationsContext ConsultationsContext = new ConsultationsContext();
         public DisciplinesContext DisciplinesContext = new DisciplinesContext();
         public ObservableCollection<DisciplinesModel> AllDisciplines { get; set; }

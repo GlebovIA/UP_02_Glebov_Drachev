@@ -1,4 +1,6 @@
-﻿namespace UP_02_Glebov_Drachev.Models
+﻿using System;
+
+namespace UP_02_Glebov_Drachev.Models
 {
     public class ConsultationsModel
     {
