@@ -14,7 +14,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         private StudentsContext StudentsContext = new StudentsContext();
         private DisciplinesContext DisciplinesContext = new DisciplinesContext();
         private AbsencesModel Model { get; set; }
-        private bool IsUpdate { get; set; }
+        private bool IsUpdate = false;
 
         public AbsencesPage(AbsencesContext context, AbsencesModel model = null)
         {

@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,25 +10,18 @@ namespace UP_02_Glebov_Drachev.Views.Pages
 {
     public partial class ConsultationsPage : Page
     {
-        public ConsultationsContext ConsultationsContext { get; set; }
-        public DisciplinesContext DisciplinesContext { get; set; }
-        public ObservableCollection<DisciplinesModel> AllDisciplines { get; set; }
+        public ConsultationsContext Context { get; set; }
+        public DisciplinesContext DisciplinesContext = new DisciplinesContext();
         private ConsultationsModel Model { get; set; }
-        private bool IsUpdate { get; set; }
+        private bool IsUpdate = false;
 
-        public ConsultationsPage(ConsultationsContext context, ConsultationsModel consultationsModel = null)
+        public ConsultationsPage(ConsultationsContext context, ConsultationsModel model = null)
         {
             InitializeComponent();
-            ConsultationsContext = context;
-            DisciplinesContext = new DisciplinesContext();
-            AllDisciplines = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines.ToList());
-
-            if (consultationsModel != null)
+            Context = context;
+            if (model != null)
             {
-                // Используем переданный контекст для поиска консультации
-                Model = context.Consultations
-                    .Include(c => c.Discipline)  // Включаем связанную сущность Discipline
-                    .FirstOrDefault(x => x.Id == consultationsModel.Id);
+                Model = model;
                 IsUpdate = true;
             }
             else
@@ -40,7 +30,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
             }
 
             // Привязка дисциплин к ComboBox
-            Disciplines.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = AllDisciplines });
+            Disciplines.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines) });
             DataContext = Model;
         }
 
@@ -48,8 +38,9 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         {
             try
             {
+                if (IsUpdate) Context.Consultations.Add(Model);
                 // Сохраняем изменения
-                ConsultationsContext.SaveChanges();
+                Context.SaveChanges();
                 GeneralPage.SwapPages(new ConsultationsList());
             }
             catch (Exception ex)

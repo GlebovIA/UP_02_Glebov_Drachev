@@ -13,7 +13,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         private DisciplinesContext Context { get; set; }
         private TeachersContext TeachersContext = new TeachersContext();
         private DisciplinesModel Model { get; set; }
-        private bool IsUpdate { get; set; }
+        private bool IsUpdate = false;
 
         public DisciplinesPage(DisciplinesContext context, DisciplinesModel model = null)
         {
