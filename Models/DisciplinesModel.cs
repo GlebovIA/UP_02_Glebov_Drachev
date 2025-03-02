@@ -5,10 +5,19 @@ namespace UP_02_Glebov_Drachev.Models
     [Table("Disciplines")]
     public class DisciplinesModel : BaseModel
     {
+        private int _id;
         private string _name;
         private int _teacherId;
 
-        public int Id { get; set; }  // Ensure this property is present if not inherited from BaseModel
+        public int Id
+        {
+            get { return _id; }
+            set
+            {
+                _id = value;
+                OnPropertyChanged(nameof(Id));
+            }
+        }
 
         public string Name
         {

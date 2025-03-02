@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,9 +10,9 @@ namespace UP_02_Glebov_Drachev.Views.Pages
 {
     public partial class AbsencesPage : Page
     {
-        public AbsencesContext Context { get; set; }
-        public StudentsContext StudentsContext = new StudentsContext();
-        public DisciplinesContext DisciplinesContext = new DisciplinesContext();
+        private AbsencesContext Context { get; set; }
+        private StudentsContext StudentsContext = new StudentsContext();
+        private DisciplinesContext DisciplinesContext = new DisciplinesContext();
         private AbsencesModel Model { get; set; }
         private bool IsUpdate { get; set; }
 
@@ -42,8 +40,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
 
             try
             {
-                Context.Entry(Model).State = EntityState.Modified;
-                // Сохранение изменений
+                if (!IsUpdate) Context.Absences.Add(Model);
                 Context.SaveChanges();
                 GeneralPage.SwapPages(new AbsencesList());
             }

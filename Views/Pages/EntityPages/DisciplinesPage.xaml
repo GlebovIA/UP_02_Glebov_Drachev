@@ -10,12 +10,12 @@
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Название:" Foreground="#FF0060AC" FontSize="14" HorizontalAlignment="Left"/>
-                <TextBox Text="{Binding Name}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
+                <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
                 <Label Content="Преподаватель:" Foreground="#FF0060AC" FontSize="14"/>
-                <ComboBox x:Name="Teachers" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding TeacherId}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Stretch" Margin="5, 0"/>
+                <ComboBox x:Name="Teachers" DisplayMemberPath="FullName" SelectedValuePath="Id" SelectedValue="{Binding TeacherId}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Stretch" Margin="5, 0"/>
             </StackPanel>
         </StackPanel>
 

@@ -12,7 +12,7 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Преподаватель:" Foreground="#FF0060AC" FontSize="14"/>
-                    <TextBlock Text="{Binding Teacher.Name}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5, 0"/>
+                    <TextBlock Text="{Binding Teacher.FullName}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5, 0"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right">
