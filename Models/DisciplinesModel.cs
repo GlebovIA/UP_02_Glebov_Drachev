@@ -38,7 +38,6 @@ namespace UP_02_Glebov_Drachev.Models
                 OnPropertyChanged(nameof(TeacherId));
             }
         }
-
         public virtual TeachersModel Teacher { get; set; }
     }
 }
