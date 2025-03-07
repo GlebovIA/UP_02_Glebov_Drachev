@@ -39,5 +39,11 @@ namespace UP_02_Glebov_Drachev.Models
             }
         }
         public virtual TeachersModel Teacher { get; set; }
+
+        [NotMapped]
+        public string FullInfo
+        {
+            get { return $"{Name}({Teacher.FullName})"; }
+        }
     }
 }

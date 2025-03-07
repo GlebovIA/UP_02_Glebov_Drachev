@@ -8,7 +8,7 @@ namespace UP_02_Glebov_Drachev.Contexts
         public DbSet<ConsultationResultsModel> ConsultationsResults { get; set; }
         public ConsultationResultsContext()
         {
-            Database.Migrate();
+            Database.EnsureCreated();
             ConsultationsResults.Load();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

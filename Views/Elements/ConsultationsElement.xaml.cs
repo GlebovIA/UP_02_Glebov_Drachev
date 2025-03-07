@@ -3,6 +3,7 @@ using System.Windows.Input;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Pages;
+using UP_02_Glebov_Drachev.Views.Pages.EntityPages;
 
 namespace UP_02_Glebov_Drachev.Views.Elements
 {
@@ -27,7 +28,8 @@ namespace UP_02_Glebov_Drachev.Views.Elements
 
         private void DeleteClick(object sender, MouseButtonEventArgs e)
         {
-            // Добавьте логику для удаления записи, если нужно
+            Context.Remove(Model);
+            GeneralPage.SwapPages(new ConsultationsList());
         }
     }
 }
