@@ -1,7 +1,8 @@
-﻿<Page x:Class="UP_02_Glebov_Drachev.Views.Pages.EntityPages.ConsultationResultsList"
+﻿<Page x:Class="UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists.ConsultationsList"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Title="ConsultationResultsList">
+      xmlns:local1="clr-namespace:UP_02_Glebov_Drachev.Views.Elements"
+      Title="ConsultationsList">
 
     <Grid>
         <ListView x:Name="List" Background="White" HorizontalContentAlignment="Stretch" BorderThickness="0">

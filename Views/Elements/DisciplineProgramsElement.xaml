@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="UP_02_Glebov_Drachev.Views.Elements.DisciplineProgramsElement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:phTBx="clr-namespace:UP_02_Glebov_Drachev.Views.Controls">
+    <Border CornerRadius="5" Background="White" Margin="5" Padding="10">
+        <Grid>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Дисциплина:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                    <TextBlock Text="{Binding Discipline.Name}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5, 0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Тема:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                    <TextBlock Text="{Binding Theme}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5, 0"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Тип занятия:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                    <TextBlock Text="{Binding LessonType.TypeName}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5, 0"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Количество часов:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                    <TextBlock Text="{Binding HoursCount}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5, 0"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" >
+                <phTBx:BlueRoundButton Text="Изменить" MouseLeftButtonDown="RedacClick"/>
+                <phTBx:RoundButton Text="Удалить" MouseLeftButtonDown="DeleteClick" Margin="0, 20, 0, 0"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

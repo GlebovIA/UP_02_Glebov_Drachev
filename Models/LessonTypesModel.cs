@@ -1,15 +1,31 @@
-﻿namespace UP_02_Glebov_Drachev.Models
-{
-    public class LessonTypesModel
-    {
-        public int Id { get; set; }
-        public string TypeName { get; set; }
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-        public LessonTypesModel(int id, string typeName)
+namespace UP_02_Glebov_Drachev.Models
+{
+    [Table("LessonTypes")]
+    public class LessonTypesModel : BaseModel
+    {
+        private int _id;
+        private string _typeName;
+
+        public int Id
         {
-            Id = id;
-            TypeName = typeName;
+            get { return _id; }
+            set
+            {
+                _id = value;
+                OnPropertyChanged(nameof(Id));
+            }
+        }
+
+        public string TypeName
+        {
+            get { return _typeName; }
+            set
+            {
+                _typeName = value;
+                OnPropertyChanged(nameof(TypeName));
+            }
         }
     }
-
 }

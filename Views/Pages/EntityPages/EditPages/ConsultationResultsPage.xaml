@@ -1,12 +1,12 @@
-﻿<Page x:Class="UP_02_Glebov_Drachev.Views.Pages.AbsencesPage"
+﻿<Page x:Class="UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages.ConsultationResultsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:control="clr-namespace:UP_02_Glebov_Drachev.Views.Controls"
-      Title="Пропуски занятий">
+      Title="ConsultationResultsPage">
 
     <Grid>
         <StackPanel>
-            <Label Content="Опоздания:" Foreground="#FF0060AC" FontSize="16" HorizontalAlignment="Left"/>
+            <Label Content="Результат консультации" Foreground="#FF0060AC" FontSize="16" HorizontalAlignment="Left"/>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Дата:" Foreground="#FF0060AC" FontSize="14" HorizontalAlignment="Left"/>
                 <DatePicker SelectedDate="{Binding Date}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
@@ -18,18 +18,18 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Дисциплина:" Foreground="#FF0060AC" FontSize="14"/>
-                <ComboBox x:Name="Disciplines" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding DisciplineId}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Stretch" Margin="5, 0"/>
+                <Label Content="Консультация:" Foreground="#FF0060AC" FontSize="14"/>
+                <ComboBox x:Name="Consultation" DisplayMemberPath="Consultation.Discipline.FullInfo" SelectedValuePath="Id" SelectedValue="{Binding ConsultationId}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Stretch" Margin="5, 0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Минуты опоздания:" Foreground="#FF0060AC" FontSize="14"/>
-                <TextBox Text="{Binding DelayMinutes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
+                <Label Content="Присутствие:" Foreground="#FF0060AC" FontSize="14"/>
+                <CheckBox Foreground="#FF9EA1A2" IsChecked="{Binding Presence}" FontSize="14" VerticalAlignment="Center" Margin="5, 0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <Label Content="Объяснительная записка:" Foreground="#FF0060AC" FontSize="14"/>
-                <TextBox Text="{Binding ExplanatoryNote, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
+                <Label Content="Сданные работы:" Foreground="#FF0060AC" FontSize="14"/>
+                <TextBox Text="{Binding SubmittedPractice, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
             </StackPanel>
 
         </StackPanel>

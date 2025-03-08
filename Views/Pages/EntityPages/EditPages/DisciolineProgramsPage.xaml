@@ -1,0 +1,36 @@
+﻿<Page x:Class="UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages.DisciolineProgramsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:control="clr-namespace:UP_02_Glebov_Drachev.Views.Controls"
+      Title="DisciolineProgramsPage">
+
+    <Grid>
+        <StackPanel>
+            <Label Content="Программа дисциплины" Foreground="#FF0060AC" FontSize="16" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Дисциплина:" Foreground="#FF0060AC" FontSize="14"/>
+                <ComboBox x:Name="Discipline" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding DisciplineId}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Stretch" Margin="5, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Тема занятия:" Foreground="#FF0060AC" FontSize="14"/>
+                <TextBox Text="{Binding Theme, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Тип занятия:" Foreground="#FF0060AC" FontSize="14"/>
+                <ComboBox x:Name="LessonType" DisplayMemberPath="TypeName" SelectedValuePath="Id" SelectedValue="{Binding DisciplineId}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Stretch" Margin="5, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Количество часов:" Foreground="#FF0060AC" FontSize="14"/>
+                <TextBox Text="{Binding HoursCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
+            </StackPanel>
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+            <control:BlueRoundButton Text="Принять" MouseLeftButtonDown="Acept"/>
+            <control:RoundButton Text="Отмена" MouseLeftButtonDown="Cancel" Margin="20, 0, 0, 0"/>
+        </StackPanel>
+    </Grid>
+</Page>

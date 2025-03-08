@@ -4,9 +4,9 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
-using UP_02_Glebov_Drachev.Views.Pages.EntityPages;
+using UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists;
 
-namespace UP_02_Glebov_Drachev.Views.Pages
+namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
 {
     public partial class DisciplinesPage : Page
     {

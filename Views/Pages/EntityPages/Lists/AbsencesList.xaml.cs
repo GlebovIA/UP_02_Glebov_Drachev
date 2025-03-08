@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Elements;
 
-namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages
+namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
 {
     /// <summary>
     /// Логика взаимодействия для ListPage.xaml

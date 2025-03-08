@@ -5,7 +5,7 @@ using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Elements;
 
-namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages
+namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
 {
     /// <summary>
     /// Логика взаимодействия для ConsultationResultsList.xaml

@@ -9,29 +9,28 @@ using UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists;
 namespace UP_02_Glebov_Drachev.Views.Elements
 {
     /// <summary>
-    /// Логика взаимодействия для AbsenceElement.xaml
+    /// Логика взаимодействия для DisciplineProgrammsModel.xaml
     /// </summary>
-    public partial class AbsencesElement : UserControl
+    public partial class DisciplineProgramsElement : UserControl
     {
-        public AbsencesModel Model { get; set; }
-        public AbsencesContext Context { get; set; }
-        public AbsencesElement(AbsencesModel model, AbsencesContext context)
+        public DisciplineProgramsModel Model { get; set; }
+        public DisciplineProgramsContext Context { get; set; }
+        public DisciplineProgramsElement(DisciplineProgramsModel model, DisciplineProgramsContext context)
         {
             InitializeComponent();
             Model = model;
             Context = context;
             DataContext = Model;
         }
-
         private void RedacClick(object sender, MouseButtonEventArgs e)
         {
-            GeneralPage.SwapPages(new AbsencesPage(Context, Model));
+            GeneralPage.SwapPages(new DisciolineProgramsPage(Context, Model));
         }
 
         private void DeleteClick(object sender, MouseButtonEventArgs e)
         {
             Context.Remove(Model);
-            GeneralPage.SwapPages(new AbsencesList());
+            GeneralPage.SwapPages(new DisciplineProgramsList());
         }
     }
 }

@@ -1,20 +1,56 @@
-﻿using System;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UP_02_Glebov_Drachev.Models
 {
-    public class LessonModel
+    [Table("Lessons")]
+    public class LessonModel : BaseModel
     {
-        public int Id { get; set; }
-        public int DisciplineProgramId { get; set; }
-        public int StudGroupId { get; set; }
-        public DateTime Time { get; set; }
+        private int _id;
+        private int _disciplineProgramId;
+        private int _studGroupId;
+        private DateTime _time;
 
-        public LessonModel(int id, int disciplineProgramId, int studGroupId, DateTime time)
+        public int Id
         {
-            Id = id;
-            DisciplineProgramId = disciplineProgramId;
-            StudGroupId = studGroupId;
-            Time = time;
+            get { return _id; }
+            set
+            {
+                _id = value;
+                OnPropertyChanged(nameof(Id));
+            }
         }
+
+        public int DisciplineProgramId
+        {
+            get { return _disciplineProgramId; }
+            set
+            {
+                _disciplineProgramId = value;
+                OnPropertyChanged(nameof(DisciplineProgramId));
+            }
+        }
+
+        public int StudGroupId
+        {
+            get { return _studGroupId; }
+            set
+            {
+                _studGroupId = value;
+                OnPropertyChanged(nameof(StudGroupId));
+            }
+        }
+
+        public DateTime Time
+        {
+            get { return _time; }
+            set
+            {
+                _time = value;
+                OnPropertyChanged(nameof(Time));
+            }
+        }
+
+        public virtual DisciplineProgramsModel DisciplineProgram { get; set; }
+        public virtual GroupsModel StudGroup { get; set; }
     }
 }
