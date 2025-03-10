@@ -1,0 +1,40 @@
+﻿<Page x:Class="UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages.MarksPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:control="clr-namespace:UP_02_Glebov_Drachev.Views.Controls"
+      Title="MarksPage">
+
+    <Grid>
+        <StackPanel>
+            <Label Content="Оценка" Foreground="#FF0060AC" FontSize="16" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Дата:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                <DatePicker SelectedDate="{Binding Date}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" Margin="5, 0, 0, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Оценка:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                <TextBox Text="{Binding Mark}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" Margin="5, 0, 0, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Занятие:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                <ComboBox x:Name="Lesson" DisplayMemberPath="Theme" SelectedValuePath="Id" SelectedValue="{Binding LessonId}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" Margin="5, 0, 0, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Студент:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                <ComboBox x:Name="Student" DisplayMemberPath="FullName" SelectedValuePath="Id" SelectedValue="{Binding StudentId}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" Margin="5, 0, 0, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Описание:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                <TextBox Text="{Binding Description}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" Margin="5, 0, 0, 0"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+            <control:BlueRoundButton Text="Принять" MouseLeftButtonDown="Acept"/>
+            <control:RoundButton Text="Отмена" MouseLeftButtonDown="Cancel" Margin="20, 0, 0, 0"/>
+        </StackPanel>
+    </Grid>
+</Page>
