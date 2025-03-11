@@ -1,0 +1,40 @@
+﻿<Page x:Class="UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages.StudentsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:control="clr-namespace:UP_02_Glebov_Drachev.Views.Controls"
+      Title="StudentsPage">
+
+    <Grid>
+        <StackPanel>
+            <Label Content="Студент" Foreground="#FF0060AC" FontSize="16" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Фамилия:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                <TextBox Text="{Binding Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Имя:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Отчество:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                <TextBox Text="{Binding Lastname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Группа:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                <ComboBox x:Name="Group" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding StudGroup}"  Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Дата вызова:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                <DatePicker SelectedDate="{Binding DateOfRemand}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+            <control:BlueRoundButton Text="Принять" MouseLeftButtonDown="Acept"/>
+            <control:RoundButton Text="Отмена" MouseLeftButtonDown="Cancel" Margin="20, 0, 0, 0"/>
+        </StackPanel>
+    </Grid>
+</Page>
