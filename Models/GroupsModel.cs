@@ -1,19 +1,29 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UP_02_Glebov_Drachev.Models
 {
     [Table("StudGroups")]
-    public class GroupsModel
+    public class GroupsModel : BaseModel
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-        public GroupsModel(int id, string name)
+        private int _id;
+        private string _name;
+        public int Id
         {
-            Id = id;
-            Name = name;
+            get { return _id; }
+            set
+            {
+                _id = value;
+                OnPropertyChanged(nameof(Id));
+            }
+        }
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged(nameof(Name));
+            }
         }
     }
 }

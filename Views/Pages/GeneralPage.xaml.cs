@@ -59,7 +59,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
                 new TabElement(new TabModel() { Title = "Программы дисциплин", Content = GetDisciplineProgramsData() }, (s, a) => SetDisciplineProgramsElement()),
                 new TabElement(new TabModel() { Title = "Оценки", Content = GetMarksData() }, (s, a) => SetMarksData()),
                 new TabElement(new TabModel() { Title = "Пропуски занятий", Content = "", IsFirst = true }, (s, a) => SetAbsencesElement()),
-                new TabElement(new TabModel() { Title = "Группы", Content = GetGroupsData() }, (s, a) => SetAbsencesElement()),
+                new TabElement(new TabModel() { Title = "Группы", Content = GetGroupsData() }, (s, a) => SetGroupsElements()),
                 new TabElement(new TabModel() { Title = "Студенты", Content = GetStudentsData() }, (s, a) => SetAbsencesElement()),
                 new TabElement(new TabModel() { Title = "Консультации", Content = GetConsultationsData() }, (s, a) => SetConsultationsElement()),
                 new TabElement(new TabModel() { Title = "Результаты консультаций", Content = GetConsultationResultsData() }, (s, a) => SetConsultationResultsElement()),
@@ -111,6 +111,10 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         private void SetMarksData()
         {
             SwapPages(new MarksList());
+        }
+        private void SetGroupsElements()
+        {
+            SwapPages(new GroupsList());
         }
     }
 }

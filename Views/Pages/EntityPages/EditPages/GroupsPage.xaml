@@ -1,0 +1,19 @@
+﻿<Page x:Class="UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages.GroupsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:control="clr-namespace:UP_02_Glebov_Drachev.Views.Controls"
+      Title="GroupPage">
+
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Название группы:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                <TextBox Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
+            <control:BlueRoundButton Text="Принять" MouseLeftButtonDown="Acept"/>
+            <control:RoundButton Text="Отмена" MouseLeftButtonDown="Cancel" Margin="20, 0, 0, 0"/>
+        </StackPanel>
+    </Grid>
+</Page>
