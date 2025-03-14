@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -28,16 +29,13 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
             else
                 Model = new AbsencesModel();
 
-            Students.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<StudentsModel>(StudentsContext.Students) });
-            Disciplines.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines) });
+            StudentsComboBox.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<StudentsModel>(StudentsContext.Students) });
+            DisciplinesComboBox.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines) });
             DataContext = Model;
         }
 
         private void Acept(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            // Вывод значений для отладки
-            MessageBox.Show($"DelayMinutes: {Model.DelayMinutes}, ExplanatoryNote: {Model.ExplanatoryNote}");
-
             try
             {
                 if (!IsUpdate) Context.Absences.Add(Model);
@@ -49,7 +47,6 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
                 MessageBox.Show(ex.Message);
             }
         }
-
 
         private void Cancel(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {

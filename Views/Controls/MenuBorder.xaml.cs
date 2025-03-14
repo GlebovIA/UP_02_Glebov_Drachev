@@ -1,11 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
 
 namespace UP_02_Glebov_Drachev.Views.Controls
 {
@@ -16,6 +14,7 @@ namespace UP_02_Glebov_Drachev.Views.Controls
             add { MouseLeftButtonDown += value; }
             remove { MouseLeftButtonDown -= value; }
         }
+
         public MenuBorder()
         {
             InitializeComponent();
@@ -27,36 +26,26 @@ namespace UP_02_Glebov_Drachev.Views.Controls
 
         private void OnMouseEnter(object sender, MouseEventArgs e)
         {
-            DoubleAnimation borderAnimation = new DoubleAnimation();
-            borderAnimation.From = ActualWidth;
-            borderAnimation.To = 60;
-            borderAnimation.Duration = TimeSpan.FromSeconds(0.1);
-            BeginAnimation(Border.WidthProperty, borderAnimation);
+            Background = new SolidColorBrush(Color.FromArgb(255, 230, 230, 230));
+            DoubleAnimation widthAnimation = new DoubleAnimation(60, 70, TimeSpan.FromSeconds(0.2));
+            BeginAnimation(Border.WidthProperty, widthAnimation);
         }
 
         private void OnMouseLeave(object sender, MouseEventArgs e)
         {
-            DoubleAnimation borderAnimation = new DoubleAnimation();
-            borderAnimation.From = ActualWidth;
-            borderAnimation.To = 50;
-            borderAnimation.Duration = TimeSpan.FromSeconds(0.1);
-            BeginAnimation(Border.WidthProperty, borderAnimation);
+            Background = new SolidColorBrush(Color.FromArgb(255, 241, 241, 241));
+            DoubleAnimation widthAnimation = new DoubleAnimation(70, 60, TimeSpan.FromSeconds(0.2));
+            BeginAnimation(Border.WidthProperty, widthAnimation);
         }
 
         private void OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            // Более приятный оттенок для активного состояния
-            Background = new SolidColorBrush(Color.FromArgb(255, 240, 240, 240)); // Голубой цвет
+            Background = new SolidColorBrush(Color.FromArgb(255, 200, 200, 200));
         }
 
         private void OnMouseUp(object sender, MouseButtonEventArgs e)
         {
-            // Мягкий светло-серый цвет для неактивного состояния
-            Background = new SolidColorBrush(Color.FromArgb(255, 240, 240, 240)); // Светло-серый
+            Background = new SolidColorBrush(Color.FromArgb(255, 230, 230, 230));
         }
-
-
-        public static readonly RoutedEvent ClickEvent =
-            EventManager.RegisterRoutedEvent("OnClick", RoutingStrategy.Bubble, typeof(Mouse), typeof(MenuBorder));
     }
 }

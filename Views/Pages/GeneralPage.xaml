@@ -3,63 +3,25 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:control="clr-namespace:UP_02_Glebov_Drachev.Views.Controls"
       Title="GeneralPage">
-
     <Page.Resources>
-        <!-- Стиль для фона с градиентом -->
         <LinearGradientBrush x:Key="PageBackground" StartPoint="0,0" EndPoint="0,1">
             <GradientStop Color="#FF0060AC" Offset="0"/>
             <GradientStop Color="#FF004F7F" Offset="1"/>
         </LinearGradientBrush>
-
-        <!-- Стиль для бордера с плавными тенями и круглыми углами -->
-        <Style x:Key="ModernBorder" TargetType="Border">
-            <Setter Property="Background" Value="#FFF1F1F1"/>
-            <Setter Property="BorderBrush" Value="#FFD9D9D9"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="12"/>
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="Effect">
-                <Setter.Value>
-                    <DropShadowEffect Color="Gray" BlurRadius="8" ShadowDepth="4"/>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- Стиль для кнопок с эффектами при наведении -->
-        <Style x:Key="ModernButton" TargetType="Button">
-            <Setter Property="Background" Value="#FF0060AC"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Padding" Value="10, 5"/>
-            <Setter Property="BorderBrush" Value="#FF0060AC"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Cursor" Value="Hand"/>
-            <Setter Property="Height" Value="50"/>
-            <Setter Property="Width" Value="180"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#FF004F7F"/>
-                    <Setter Property="BorderBrush" Value="#FF004F7F"/>
-                    <Setter Property="ScaleTransform.ScaleX" Value="1.1"/>
-                    <Setter Property="ScaleTransform.ScaleY" Value="1.1"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
     </Page.Resources>
-
     <Grid Background="{StaticResource PageBackground}">
-        <!-- Бургер-меню -->
-        <control:MenuBorder x:Name="BurgerMenu" Margin="0, 10, 0, 0"/>
-
+        <control:MenuBorder x:Name="BurgerMenu" Margin="0,20,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <control:OpenedMenuBorder x:Name="OpenedMeny" VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
-
-        <!-- Основной контент с рамкой -->
         <Border x:Name="FrameBorder"
-                Style="{StaticResource ModernBorder}"
+                Background="White"
+                CornerRadius="20"
+                Margin="340,20,20,20"
+                Padding="10"
                 HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                Margin="310, 10, 10, 10" Padding="5" Background="White">
+                VerticalAlignment="Stretch">
+            <Border.Effect>
+                <DropShadowEffect Color="Gray" BlurRadius="15" ShadowDepth="5" Opacity="0.3"/>
+            </Border.Effect>
             <Frame x:Name="PagesFrame"/>
         </Border>
     </Grid>

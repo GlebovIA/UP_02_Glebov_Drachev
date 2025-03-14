@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,14 +24,14 @@ namespace UP_02_Glebov_Drachev.Views.Controls
             tabParent.ItemsSource = Items;
         }
 
-        private void OnMouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        private void OnMouseEnter(object sender, MouseEventArgs e)
         {
-            BackButton.BorderBrush = new SolidColorBrush(Color.FromArgb(255, 0, 96, 172));
+            BackButton.Background = new SolidColorBrush(Color.FromArgb(255, 0, 79, 127));
         }
 
-        private void OnMouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        private void OnMouseLeave(object sender, MouseEventArgs e)
         {
-            BackButton.BorderBrush = Brushes.DarkGray;
+            BackButton.Background = new SolidColorBrush(Color.FromArgb(255, 0, 96, 172));
         }
 
         public event MouseButtonEventHandler OnClick

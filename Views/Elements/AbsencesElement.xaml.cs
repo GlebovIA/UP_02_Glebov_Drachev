@@ -8,13 +8,11 @@ using UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists;
 
 namespace UP_02_Glebov_Drachev.Views.Elements
 {
-    /// <summary>
-    /// Логика взаимодействия для AbsenceElement.xaml
-    /// </summary>
     public partial class AbsencesElement : UserControl
     {
         public AbsencesModel Model { get; set; }
         public AbsencesContext Context { get; set; }
+
         public AbsencesElement(AbsencesModel model, AbsencesContext context)
         {
             InitializeComponent();

@@ -1,21 +1,23 @@
 ﻿<Border x:Class="UP_02_Glebov_Drachev.Views.Controls.BlueRoundButton"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                     CornerRadius="10"
-        Background="#FF0060ac"
-        Width="145"
-        Height="40"
-        Cursor="Hand">
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        CornerRadius="15"
+        Background="#FF0060AC"
+        Width="160"
+        Height="45"
+        Cursor="Hand"
+        BorderThickness="0">
+    <Border.Effect>
+        <DropShadowEffect Color="Gray" BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
+    </Border.Effect>
     <Label x:Name="BackButton"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            Content="{Binding Text, RelativeSource={RelativeSource AncestorType=Border}}"
-            FontSize="16"
-            FontFamily="Arial"
-            Background="Transparent"
-            Foreground="White"
-            BorderBrush="Transparent"
-            Cursor="Hand"
-            Padding="0">
-    </Label>
+           VerticalAlignment="Center"
+           HorizontalAlignment="Center"
+           Content="{Binding Text, RelativeSource={RelativeSource AncestorType=Border}}"
+           FontSize="18"
+           FontFamily="Segoe UI"
+           FontWeight="SemiBold"
+           Background="Transparent"
+           Foreground="White"
+           Padding="0"/>
 </Border>

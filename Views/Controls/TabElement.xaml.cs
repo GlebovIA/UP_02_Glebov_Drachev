@@ -2,13 +2,11 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using UP_02_Glebov_Drachev.Models;
 
 namespace UP_02_Glebov_Drachev.Views.Controls
 {
-    /// <summary>
-    /// Логика взаимодействия для TabElement.xaml
-    /// </summary>
     public partial class TabElement : Border
     {
         private TabModel Model { get; set; }
@@ -16,6 +14,7 @@ namespace UP_02_Glebov_Drachev.Views.Controls
         {
             set { MouseLeftButtonDown += value; }
         }
+
         public TabElement(TabModel model, MouseButtonEventHandler onClick)
         {
             InitializeComponent();
@@ -27,18 +26,22 @@ namespace UP_02_Glebov_Drachev.Views.Controls
             OnClick = onClick;
         }
 
-        private void OnMouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        private void OnMouseEnter(object sender, MouseEventArgs e)
         {
-            Title.Foreground = new SolidColorBrush(Color.FromArgb(255, 228, 22, 19));
-            Title.FontWeight = FontWeights.Bold;
-            Background = new SolidColorBrush(Color.FromArgb(255, 193, 193, 193));
+            Background = new SolidColorBrush(Color.FromArgb(255, 230, 230, 230));
+            Title.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 79, 127));
+            DoubleAnimation scaleAnimation = new DoubleAnimation(1, 1.02, TimeSpan.FromSeconds(0.2));
+            BeginAnimation(ScaleTransform.ScaleXProperty, scaleAnimation);
+            BeginAnimation(ScaleTransform.ScaleYProperty, scaleAnimation);
         }
 
-        private void OnMouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        private void OnMouseLeave(object sender, MouseEventArgs e)
         {
-            Title.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 96, 172));
-            Title.FontWeight = FontWeights.Normal;
             Background = Brushes.White;
+            Title.Foreground = new SolidColorBrush(Color.FromArgb(255, 0, 96, 172));
+            DoubleAnimation scaleAnimation = new DoubleAnimation(1.02, 1, TimeSpan.FromSeconds(0.2));
+            BeginAnimation(ScaleTransform.ScaleXProperty, scaleAnimation);
+            BeginAnimation(ScaleTransform.ScaleYProperty, scaleAnimation);
         }
     }
 }
