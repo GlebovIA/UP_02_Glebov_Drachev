@@ -40,10 +40,5 @@ namespace UP_02_Glebov_Drachev.Views.Controls
             Title.FontWeight = FontWeights.Normal;
             Background = Brushes.White;
         }
-        private void ShowTabContent(object sender, MouseButtonEventArgs e)
-        {
-            // Отображаем данные для выбранной вкладки
-            MessageBox.Show($"Содержимое вкладки {Model.Title}: {Model.Content}");
-        }
     }
 }

@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Height="40"
         CornerRadius="10"
-        HorizontalAlignment="Stretch"
-        MouseDown="ShowTabContent">
+        HorizontalAlignment="Stretch">
     <Grid>
         <Label VerticalContentAlignment="Center" HorizontalContentAlignment="Left">
             <TextBlock x:Name="Title" FontSize="16" FontFamily="Arial" Foreground="#FF0060AC"/>
