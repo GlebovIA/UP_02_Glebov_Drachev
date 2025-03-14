@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,10 +9,7 @@ using UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
 {
-    /// <summary>
-    /// Логика взаимодействия для DisciolineProgramsPage.xaml
-    /// </summary>
-    public partial class DisciolineProgramsPage : Page
+    public partial class DisciplineProgramsPage : Page // Исправлено имя класса
     {
         private DisciplineProgramsContext Context { get; set; }
         private DisciplinesContext DisciplinesContext = new DisciplinesContext();
@@ -19,7 +17,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
         private DisciplineProgramsModel Model { get; set; }
         private bool IsUpdate = false;
 
-        public DisciolineProgramsPage(DisciplineProgramsContext context, DisciplineProgramsModel model = null)
+        public DisciplineProgramsPage(DisciplineProgramsContext context, DisciplineProgramsModel model = null)
         {
             InitializeComponent();
             Context = context;
@@ -31,8 +29,11 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
             else
                 Model = new DisciplineProgramsModel();
 
-            LessonType.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<LessonTypesModel>(LessonTypesContext.LessonTypes) });
-            Discipline.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines) });
+            // Исправлено: LessonType -> LessonTypesComboBox, Discipline -> DisciplinesComboBox
+            LessonTypesComboBox.SetBinding(ComboBox.ItemsSourceProperty,
+                new Binding() { Source = new ObservableCollection<LessonTypesModel>(LessonTypesContext.LessonTypes) });
+            DisciplinesComboBox.SetBinding(ComboBox.ItemsSourceProperty,
+                new Binding() { Source = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines) });
             DataContext = Model;
         }
 
@@ -49,7 +50,6 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
                 MessageBox.Show(ex.Message);
             }
         }
-
 
         private void Cancel(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {

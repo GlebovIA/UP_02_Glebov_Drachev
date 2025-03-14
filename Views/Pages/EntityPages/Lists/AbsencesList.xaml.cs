@@ -36,7 +36,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
 
         private void AddClick(object sender, MouseButtonEventArgs e)
         {
-            GeneralPage.SwapPages(new AbsencesPage(context));
+            GeneralPage.SwapPages(new EntityPages.EditPages.AbsencesPage(context));
         }
     }
 }

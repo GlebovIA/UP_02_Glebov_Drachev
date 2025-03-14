@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -29,9 +30,13 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
             else
                 Model = new TeachersLoadModel();
 
-            Teachers.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<TeachersModel>(TeachersContext.Teachers) });
-            Disciplines.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines) });
-            StudGroups.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<GroupsModel>(StudGroupsContext.Groups) });
+            // Исправлено: Teachers -> TeachersComboBox, Disciplines -> DisciplinesComboBox, StudGroups -> StudGroupsComboBox
+            TeachersComboBox.SetBinding(ComboBox.ItemsSourceProperty,
+                new Binding() { Source = new ObservableCollection<TeachersModel>(TeachersContext.Teachers) });
+            DisciplinesComboBox.SetBinding(ComboBox.ItemsSourceProperty,
+                new Binding() { Source = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines) });
+            StudGroupsComboBox.SetBinding(ComboBox.ItemsSourceProperty,
+                new Binding() { Source = new ObservableCollection<GroupsModel>(StudGroupsContext.Groups) });
             DataContext = Model;
         }
 

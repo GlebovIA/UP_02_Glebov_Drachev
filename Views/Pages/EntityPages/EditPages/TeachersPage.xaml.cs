@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -27,7 +28,9 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
             else
                 Model = new TeachersModel();
 
-            Users.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<UsersModel>(UsersContext.Users) });
+            // Исправлено: Users -> UsersComboBox
+            UsersComboBox.SetBinding(ComboBox.ItemsSourceProperty,
+                new Binding() { Source = new ObservableCollection<UsersModel>(UsersContext.Users) });
             DataContext = Model;
         }
 

@@ -24,7 +24,7 @@ namespace UP_02_Glebov_Drachev.Views.Elements
         private void RedacClick(object sender, MouseButtonEventArgs e)
         {
             // Передаем контекст и модель консультации в конструктор страницы
-            GeneralPage.SwapPages(new ConsultationsPage(Context, Model));
+            GeneralPage.SwapPages(new Pages.EntityPages.EditPages.ConsultationsPage(Context, Model));
         }
 
         private void DeleteClick(object sender, MouseButtonEventArgs e)

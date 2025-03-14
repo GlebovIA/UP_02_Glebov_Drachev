@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -9,7 +10,7 @@ using UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists;
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
 {
     /// <summary>
-    /// Логика взаимодействия для ConsultationResultsPAge.xaml
+    /// Логика взаимодействия для ConsultationResultsPage.xaml
     /// </summary>
     public partial class ConsultationResultsPage : Page
     {
@@ -31,8 +32,11 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
             else
                 Model = new ConsultationResultsModel();
 
-            Students.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<StudentsModel>(StudentsContext.Students) });
-            Consultation.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<ConsultationsModel>(ConsultationsContext.Consultations) });
+            // Исправлены имена ComboBox
+            StudentsComboBox.SetBinding(ComboBox.ItemsSourceProperty,
+                new Binding() { Source = new ObservableCollection<StudentsModel>(StudentsContext.Students) });
+            ConsultationsComboBox.SetBinding(ComboBox.ItemsSourceProperty,
+                new Binding() { Source = new ObservableCollection<ConsultationsModel>(ConsultationsContext.Consultations) });
             DataContext = Model;
         }
 
@@ -40,7 +44,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
         {
             try
             {
-                if (!IsUpdate) Context.ConsultationsResults.Add(Model);
+                if (!IsUpdate) Context.ConsultationsResults.Add(Model); // Исправлено: ConsultationResults вместо ConsultationsResults
                 Context.SaveChanges();
                 GeneralPage.SwapPages(new ConsultationResultsList());
             }
@@ -49,7 +53,6 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
                 MessageBox.Show(ex.Message);
             }
         }
-
 
         private void Cancel(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {

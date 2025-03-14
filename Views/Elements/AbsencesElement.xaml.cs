@@ -23,7 +23,7 @@ namespace UP_02_Glebov_Drachev.Views.Elements
 
         private void RedacClick(object sender, MouseButtonEventArgs e)
         {
-            GeneralPage.SwapPages(new AbsencesPage(Context, Model));
+            GeneralPage.SwapPages(new Pages.EntityPages.EditPages.AbsencesPage(Context, Model));
         }
 
         private void DeleteClick(object sender, MouseButtonEventArgs e)

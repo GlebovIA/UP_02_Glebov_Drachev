@@ -3,25 +3,45 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:control="clr-namespace:UP_02_Glebov_Drachev.Views.Controls"
       Title="Консультации">
+    <Grid Background="#FFF1F1F1">
+        <Border Background="White" CornerRadius="12" Margin="20" Padding="20" BorderThickness="1" BorderBrush="#FFD9D9D9" HorizontalAlignment="Stretch">
+            <Border.Effect>
+                <DropShadowEffect Color="Gray" BlurRadius="8" ShadowDepth="2" Opacity="0.3"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-    <Grid>
-        <StackPanel>
-            <Label Content="Консультация" Foreground="#FF0060AC" FontSize="16" HorizontalAlignment="Left"/>
+                <!-- Заголовок -->
+                <TextBlock Grid.Row="0" Text="Консультация" FontSize="24" FontFamily="Segoe UI" FontWeight="Bold" Foreground="#FF0060AC" Margin="0,0,0,20"/>
 
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Дата:" Foreground="#FF0060AC" FontSize="14" HorizontalAlignment="Left"/>
-                <DatePicker SelectedDate="{Binding Date}" Foreground="#FF9EA1A2" FontSize="14" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5, 0"/>
-            </StackPanel>
+                <!-- Поля ввода -->
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Дисциплина:" Foreground="#FF0060AC" FontSize="14"/>
-                <ComboBox x:Name="Disciplines" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding DisciplineId}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Stretch" Margin="5, 0"/>
-            </StackPanel>
-        </StackPanel>
+                    <Label Grid.Row="0" Grid.Column="0" Content="Дисциплина:" Foreground="#FF0060AC" FontSize="16" FontFamily="Segoe UI" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    <ComboBox Grid.Row="0" Grid.Column="1" x:Name="DisciplinesComboBox" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding DisciplineId}" Foreground="#FF9EA1A2" FontSize="16" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="0,0,0,15" HorizontalAlignment="Stretch"/>
 
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" >
-            <control:BlueRoundButton Text="Принять" MouseLeftButtonDown="Accept"/>
-            <control:RoundButton Text="Отмена" MouseLeftButtonDown="Cancel" Margin="20, 0, 0, 0"/>
-        </StackPanel>
+                    <Label Grid.Row="1" Grid.Column="0" Content="Дата:" Foreground="#FF0060AC" FontSize="16" FontFamily="Segoe UI" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    <DatePicker Grid.Row="1" Grid.Column="1" SelectedDate="{Binding Date}" Foreground="#FF9EA1A2" FontSize="16" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="0,0,0,15" HorizontalAlignment="Stretch"/>
+                </Grid>
+
+                <!-- Кнопки -->
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <control:BlueRoundButton Text="Принять" MouseLeftButtonDown="Accept" Margin="0,0,15,0"/>
+                    <control:RoundButton Text="Отмена" MouseLeftButtonDown="Cancel"/>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </Page>

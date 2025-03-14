@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,13 +9,11 @@ using UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
 {
-    /// <summary>
-    /// Логика взаимодействия для StudentsPage.xaml
-    /// </summary>
     public partial class StudentsPage : Page
     {
         private StudentsContext Context { get; set; }
-        private GroupsContext GroupsContext = new GroupsContext();
+        private GroupsContext StudGroupsContext = new GroupsContext();
+        private UsersContext UsersContext = new UsersContext();
         private StudentsModel Model { get; set; }
         private bool IsUpdate = false;
 
@@ -30,7 +29,11 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
             else
                 Model = new StudentsModel();
 
-            Group.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<GroupsModel>(GroupsContext.Groups) });
+            // Исправлено: Group -> StudGroupsComboBox
+            StudGroupsComboBox.SetBinding(ComboBox.ItemsSourceProperty,
+                new Binding() { Source = new ObservableCollection<GroupsModel>(StudGroupsContext.Groups) });
+            UsersComboBox.SetBinding(ComboBox.ItemsSourceProperty,
+                new Binding() { Source = new ObservableCollection<UsersModel>(UsersContext.Users) });
             DataContext = Model;
         }
 
@@ -47,6 +50,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
                 MessageBox.Show(ex.Message);
             }
         }
+
         private void Cancel(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             GeneralPage.SwapPages(new StudentsList());

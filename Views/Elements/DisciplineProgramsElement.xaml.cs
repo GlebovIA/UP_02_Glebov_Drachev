@@ -24,7 +24,7 @@ namespace UP_02_Glebov_Drachev.Views.Elements
         }
         private void RedacClick(object sender, MouseButtonEventArgs e)
         {
-            GeneralPage.SwapPages(new DisciolineProgramsPage(Context, Model));
+            GeneralPage.SwapPages(new DisciplineProgramsPage(Context, Model));
         }
 
         private void DeleteClick(object sender, MouseButtonEventArgs e)

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -29,8 +30,9 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
                 Model = new ConsultationsModel();
             }
 
-            // Привязка дисциплин к ComboBox
-            Disciplines.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines) });
+            // Привязка дисциплин к ComboBox с правильным именем
+            DisciplinesComboBox.SetBinding(ComboBox.ItemsSourceProperty,
+                new Binding() { Source = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines) });
             DataContext = Model;
         }
 
@@ -38,7 +40,8 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
         {
             try
             {
-                if (IsUpdate) Context.Consultations.Add(Model);
+                if (!IsUpdate) // Исправлено: Добавляем новую запись только если это не обновление
+                    Context.Consultations.Add(Model);
                 // Сохраняем изменения
                 Context.SaveChanges();
                 GeneralPage.SwapPages(new ConsultationsList());

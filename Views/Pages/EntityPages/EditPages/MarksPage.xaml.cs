@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,9 +9,6 @@ using UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
 {
-    /// <summary>
-    /// Логика взаимодействия для MarksPage.xaml
-    /// </summary>
     public partial class MarksPage : Page
     {
         private MarksContext Context { get; set; }
@@ -31,8 +29,11 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
             else
                 Model = new MarksModel();
 
-            Student.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<StudentsModel>(StudentsContext.Students) });
-            Lesson.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<LessonModel>(LessonsContext.Lessons) });
+            // Исправлено: Student -> StudentsComboBox, Lesson -> LessonsComboBox
+            StudentsComboBox.SetBinding(ComboBox.ItemsSourceProperty,
+                new Binding() { Source = new ObservableCollection<StudentsModel>(StudentsContext.Students) });
+            LessonsComboBox.SetBinding(ComboBox.ItemsSourceProperty,
+                new Binding() { Source = new ObservableCollection<LessonModel>(LessonsContext.Lessons) });
             DataContext = Model;
         }
 
@@ -49,7 +50,6 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
                 MessageBox.Show(ex.Message);
             }
         }
-
 
         private void Cancel(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
