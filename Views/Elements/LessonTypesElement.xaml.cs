@@ -8,12 +8,12 @@ using UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists;
 
 namespace UP_02_Glebov_Drachev.Views.Elements
 {
-    public partial class TeachersElement : UserControl
+    public partial class LessonTypesElement : UserControl
     {
-        public TeachersModel Model { get; set; }
-        public TeachersContext Context { get; set; }
+        public LessonTypesModel Model { get; set; }
+        public LessonTypesContext Context { get; set; }
 
-        public TeachersElement(TeachersModel model, TeachersContext context)
+        public LessonTypesElement(LessonTypesModel model, LessonTypesContext context)
         {
             InitializeComponent();
             Model = model;
@@ -23,13 +23,13 @@ namespace UP_02_Glebov_Drachev.Views.Elements
 
         private void RedacClick(object sender, MouseButtonEventArgs e)
         {
-            GeneralPage.SwapPages(new TeachersPage(Context, Model));
+            GeneralPage.SwapPages(new LessonTypesPage(Context, Model));
         }
 
         private void DeleteClick(object sender, MouseButtonEventArgs e)
         {
             Context.Remove(Model);
-            GeneralPage.SwapPages(new TeachersList());
+            GeneralPage.SwapPages(new LessonTypesList());
         }
     }
 }

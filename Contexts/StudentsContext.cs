@@ -8,7 +8,7 @@ namespace UP_02_Glebov_Drachev.Contexts
         public DbSet<StudentsModel> Students { get; set; }
         public StudentsContext()
         {
-            Database.MigrateAsync();
+            Database.Migrate();
             Students.Load();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="UP_02_Glebov_Drachev.Views.Elements.StudPlanElement"
+﻿<UserControl x:Class="UP_02_Glebov_Drachev.Views.Elements.StudentsElement"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:phTBx="clr-namespace:UP_02_Glebov_Drachev.Views.Controls">
@@ -6,21 +6,33 @@
         <Grid>
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Нагрузка преподавателя:" Foreground="#FF0060AC" FontSize="14"/>
-                    <TextBlock Text="{Binding TeachersLoad.Id}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5,0"/>
+                    <Label Content="Фамилия:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                    <TextBlock Text="{Binding Surname}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
                 </StackPanel>
+
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Прошедшие часы лекций:" Foreground="#FF0060AC" FontSize="14"/>
-                    <TextBlock Text="{Binding PastLectureHours}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5,0"/>
+                    <Label Content="Имя:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                    <TextBlock Text="{Binding Name}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
                 </StackPanel>
+
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Прошедшие часы практики:" Foreground="#FF0060AC" FontSize="14"/>
-                    <TextBlock Text="{Binding PastPracticeHours}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5,0"/>
+                    <Label Content="Отчество:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                    <TextBlock Text="{Binding Lastname}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Группа:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                    <TextBlock Text="{Binding StudGroup}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Дата вызова:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                    <TextBlock Text="{Binding DateOfRemand}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
                 </StackPanel>
             </StackPanel>
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right" >
                 <phTBx:BlueRoundButton Text="Изменить" MouseLeftButtonDown="RedacClick"/>
-                <phTBx:RoundButton Text="Удалить" MouseLeftButtonDown="DeleteClick" Margin="0,20,0,0"/>
+                <phTBx:RoundButton Text="Удалить" MouseLeftButtonDown="DeleteClick" Margin="0, 20, 0, 0"/>
             </StackPanel>
         </Grid>
     </Border>

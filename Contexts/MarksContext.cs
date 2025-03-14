@@ -8,8 +8,20 @@ namespace UP_02_Glebov_Drachev.Contexts
         public DbSet<MarksModel> Marks { get; set; }
         public MarksContext()
         {
-            Database.EnsureCreated();
+            Database.Migrate();
             Marks.Load();
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<MarksModel>()
+                .HasOne(a => a.Student)
+                .WithMany()
+                .HasForeignKey(a => a.StudentId);
+
+            modelBuilder.Entity<MarksModel>()
+                .HasOne(a => a.Lesson)
+                .WithMany()
+                .HasForeignKey(a => a.LessonId);
         }
     }
 }

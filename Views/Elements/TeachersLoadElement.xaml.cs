@@ -1,28 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using UP_02_Glebov_Drachev.Contexts;
+using UP_02_Glebov_Drachev.Models;
+using UP_02_Glebov_Drachev.Views.Pages;
+using UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages;
+using UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists;
 
 namespace UP_02_Glebov_Drachev.Views.Elements
 {
-    /// <summary>
-    /// Логика взаимодействия для TeachersLoadElement.xaml
-    /// </summary>
     public partial class TeachersLoadElement : UserControl
     {
-        public TeachersLoadElement()
+        public TeachersLoadModel Model { get; set; }
+        public TeachersLoadContext Context { get; set; }
+
+        public TeachersLoadElement(TeachersLoadModel model, TeachersLoadContext context)
         {
             InitializeComponent();
+            Model = model;
+            Context = context;
+            DataContext = Model;
+        }
+
+        private void RedacClick(object sender, MouseButtonEventArgs e)
+        {
+            GeneralPage.SwapPages(new TeachersLoadPage(Context, Model));
+        }
+
+        private void DeleteClick(object sender, MouseButtonEventArgs e)
+        {
+            Context.Remove(Model);
+            GeneralPage.SwapPages(new TeachersLoadList());
         }
     }
 }

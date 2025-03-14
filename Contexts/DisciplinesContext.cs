@@ -6,7 +6,6 @@ namespace UP_02_Glebov_Drachev.Contexts
     public class DisciplinesContext : BaseContext
     {
         public DbSet<DisciplinesModel> Disciplines { get; set; }
-        public DbSet<TeachersModel> Teachers { get; set; }  // Добавьте эту строку
 
         public DisciplinesContext()
         {
@@ -18,7 +17,7 @@ namespace UP_02_Glebov_Drachev.Contexts
         {
             modelBuilder.Entity<DisciplinesModel>()
                 .HasOne(d => d.Teacher)
-                .WithMany(t => t.Disciplines)
+                .WithMany()
                 .HasForeignKey(d => d.TeacherId);
         }
     }

@@ -1,21 +1,18 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
 {
-    public partial class StudPlanPage : Page
+    public partial class LessonTypesPage : Page
     {
-        private StudPlanContext Context { get; set; }
-        private TeachersLoadContext TeachersLoadContext = new TeachersLoadContext();
-        private StudPlanModel Model { get; set; }
+        private LessonTypesContext Context { get; set; }
+        private LessonTypesModel Model { get; set; }
         private bool IsUpdate = false;
 
-        public StudPlanPage(StudPlanContext context, StudPlanModel model = null)
+        public LessonTypesPage(LessonTypesContext context, LessonTypesModel model = null)
         {
             InitializeComponent();
             Context = context;
@@ -25,9 +22,8 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
                 IsUpdate = true;
             }
             else
-                Model = new StudPlanModel();
+                Model = new LessonTypesModel();
 
-            TeachersLoads.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<TeachersLoadModel>(TeachersLoadContext.TeachersLoads) });
             DataContext = Model;
         }
 
@@ -35,9 +31,9 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
         {
             try
             {
-                if (!IsUpdate) Context.StudPlans.Add(Model);
+                if (!IsUpdate) Context.LessonTypes.Add(Model);
                 Context.SaveChanges();
-                GeneralPage.SwapPages(new StudPlanList());
+                GeneralPage.SwapPages(new LessonTypesList());
             }
             catch (Exception ex)
             {
@@ -47,7 +43,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
 
         private void Cancel(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            GeneralPage.SwapPages(new StudPlanList());
+            GeneralPage.SwapPages(new LessonTypesList());
         }
     }
 }

@@ -8,14 +8,14 @@ using UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
 {
-    public partial class StudPlanPage : Page
+    public partial class TeachersPage : Page
     {
-        private StudPlanContext Context { get; set; }
-        private TeachersLoadContext TeachersLoadContext = new TeachersLoadContext();
-        private StudPlanModel Model { get; set; }
+        private TeachersContext Context { get; set; }
+        private UsersContext UsersContext = new UsersContext();
+        private TeachersModel Model { get; set; }
         private bool IsUpdate = false;
 
-        public StudPlanPage(StudPlanContext context, StudPlanModel model = null)
+        public TeachersPage(TeachersContext context, TeachersModel model = null)
         {
             InitializeComponent();
             Context = context;
@@ -25,9 +25,9 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
                 IsUpdate = true;
             }
             else
-                Model = new StudPlanModel();
+                Model = new TeachersModel();
 
-            TeachersLoads.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<TeachersLoadModel>(TeachersLoadContext.TeachersLoads) });
+            Users.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<UsersModel>(UsersContext.Users) });
             DataContext = Model;
         }
 
@@ -35,9 +35,9 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
         {
             try
             {
-                if (!IsUpdate) Context.StudPlans.Add(Model);
+                if (!IsUpdate) Context.Teachers.Add(Model);
                 Context.SaveChanges();
-                GeneralPage.SwapPages(new StudPlanList());
+                GeneralPage.SwapPages(new TeachersList());
             }
             catch (Exception ex)
             {
@@ -47,7 +47,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
 
         private void Cancel(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            GeneralPage.SwapPages(new StudPlanList());
+            GeneralPage.SwapPages(new TeachersList());
         }
     }
 }

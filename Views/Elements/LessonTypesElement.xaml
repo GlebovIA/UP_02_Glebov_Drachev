@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="UP_02_Glebov_Drachev.Views.Elements.TeachersElement"
+﻿<UserControl x:Class="UP_02_Glebov_Drachev.Views.Elements.LessonTypesElement"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:phTBx="clr-namespace:UP_02_Glebov_Drachev.Views.Controls">
@@ -6,12 +6,8 @@
         <Grid>
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="ФИО:" Foreground="#FF0060AC" FontSize="14"/>
-                    <TextBlock Text="{Binding FullName}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5,0"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="Пользователь:" Foreground="#FF0060AC" FontSize="14"/>
-                    <TextBlock Text="{Binding User.Login}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5,0"/>
+                    <Label Content="Тип занятия:" Foreground="#FF0060AC" FontSize="14"/>
+                    <TextBlock Text="{Binding TypeName}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5,0"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Right">

@@ -3,22 +3,20 @@ using UP_02_Glebov_Drachev.Models;
 
 namespace UP_02_Glebov_Drachev.Contexts
 {
-    public class TeachersContext : BaseContext
+    public class UsersContext : BaseContext
     {
-        public DbSet<TeachersModel> Teachers { get; set; }
-
-        public TeachersContext()
+        public DbSet<UsersModel> Users { get; set; }
+        public UsersContext()
         {
             Database.Migrate();
-            Teachers.Load();
+            Users.Load();
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<TeachersModel>()
-                .HasOne(t => t.User)
+            modelBuilder.Entity<UsersModel>()
+                .HasOne(a => a.Role)
                 .WithMany()
-                .HasForeignKey(t => t.UserId);
+                .HasForeignKey(a => a.RoleId);
         }
     }
 }
