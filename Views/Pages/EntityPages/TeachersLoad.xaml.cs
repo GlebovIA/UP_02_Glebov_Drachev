@@ -11,7 +11,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages
         private DataGrid loadTable;
         DisciplinesContext DisciplinesContext = new DisciplinesContext();
         GroupsContext GroupsContext = new GroupsContext();
-        StudPlansContext StudPlansContext = new StudPlansContext();
+        StudPlanContext StudPlansContext = new StudPlanContext();
         TeachersLoadContext TeacherLoadsContext = new TeachersLoadContext();
         public TeachersLoad()
         {

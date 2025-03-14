@@ -3,13 +3,22 @@ using UP_02_Glebov_Drachev.Models;
 
 namespace UP_02_Glebov_Drachev.Contexts
 {
-    public class StudPlansContext : BaseContext
+    public class StudPlanContext : BaseContext
     {
-        public DbSet<AbsencesModel> Absences { get; set; }
-        public void AbsencesContext()
+        public DbSet<StudPlanModel> StudPlans { get; set; }
+
+        public StudPlanContext()
         {
-            Database.EnsureCreated();
-            Absences.Load();
+            Database.Migrate();
+            StudPlans.Load();
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<StudPlanModel>()
+                .HasOne(sp => sp.TeachersLoad)
+                .WithMany()
+                .HasForeignKey(sp => sp.TeachersLoadId);
         }
     }
 }

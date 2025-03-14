@@ -5,10 +5,10 @@ namespace UP_02_Glebov_Drachev.Contexts
 {
     public class TeachersLoadContext : BaseContext
     {
-        public DbSet<TeacherLoadsModel> TeachersLoad { get; set; }
+        public DbSet<TeachersLoadModel> TeachersLoad { get; set; }
         public TeachersLoadContext()
         {
-            Database.EnsureCreated();
+            Database.Migrate();
             TeachersLoad.Load();
         }
     }

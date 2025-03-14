@@ -1,6 +1,9 @@
-﻿namespace UP_02_Glebov_Drachev.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace UP_02_Glebov_Drachev.Models
 {
-    public class TeacherLoadsModel
+    [Table("TeachersLoad")]
+    public class TeachersLoadModel
     {
         public int Id { get; set; }
         public int DisciplineId { get; set; }
@@ -9,7 +12,7 @@
         public int PracticeHours { get; set; }
         public int ExamHours { get; set; }
 
-        public TeacherLoadsModel(int id, int disciplineId, int studGroupId, int lectureHours, int practiceHours, int examHours)
+        public TeachersLoadModel(int id, int disciplineId, int studGroupId, int lectureHours, int practiceHours, int examHours)
         {
             Id = id;
             DisciplineId = disciplineId;

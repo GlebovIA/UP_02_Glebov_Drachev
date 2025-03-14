@@ -63,7 +63,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
                 new TabElement(new TabModel() { Title = "Студенты", Content = GetStudentsData() }, (s, a) => SetStudentsElement()),
                 new TabElement(new TabModel() { Title = "Консультации", Content = GetConsultationsData() }, (s, a) => SetConsultationsElement()),
                 new TabElement(new TabModel() { Title = "Результаты консультаций", Content = GetConsultationResultsData() }, (s, a) => SetConsultationResultsElement()),
-                new TabElement(new TabModel() { Title = "Учебные планы", Content = GetStudPlansData() }, (s, a) => SetAbsencesElement()),
+                new TabElement(new TabModel() { Title = "Учебные планы", Content = GetStudPlansData() }, (s, a) => SetStudPlanElement()),
                 new TabElement(new TabModel() { Title = "Типы занятий", Content = GetLessonTypesData() }, (s, a) => SetAbsencesElement()),
                 new TabElement(new TabModel() { Title = "Преподаватели", Content = GetTeachersData() }, (s, a) => SetAbsencesElement()),
                 new TabElement(new TabModel() { Title = "Преподавательские нагрузки", Content = GetTeachersLoadData() }, (s, a) => SetAbsencesElement()),
@@ -117,6 +117,10 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         private void SetStudentsElement()
         {
             SwapPages(new StudentsList());
+        }
+        private void SetStudPlanElement()
+        {
+            SwapPages(new StudPlanList());
         }
     }
 }
