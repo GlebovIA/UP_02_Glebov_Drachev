@@ -3,7 +3,7 @@
 namespace UP_02_Glebov_Drachev.Models
 {
     [Table("Lessons")]
-    public class LessonModel : BaseModel
+    public class LessonsModel : BaseModel
     {
         private int _id;
         private int _disciplineProgramId;

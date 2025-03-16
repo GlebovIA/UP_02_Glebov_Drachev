@@ -5,11 +5,11 @@ namespace UP_02_Glebov_Drachev.Contexts
 {
     public class DisciplineProgramsContext : BaseContext
     {
-        public DbSet<DisciplineProgramsModel> DisciplineProgramms { get; set; }
+        public DbSet<DisciplineProgramsModel> DisciplinePrograms { get; set; }
         public DisciplineProgramsContext()
         {
             Database.Migrate();
-            DisciplineProgramms.Load();
+            DisciplinePrograms.Load();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

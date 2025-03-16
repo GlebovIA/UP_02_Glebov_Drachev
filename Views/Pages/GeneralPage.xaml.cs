@@ -57,7 +57,8 @@ namespace UP_02_Glebov_Drachev.Views.Pages
             {
                 new TabElement(new TabModel() { Title = "Дисциплины", Content = GetDisciplinesData() }, (s, a) => SetDisciplinesElement()),
                 new TabElement(new TabModel() { Title = "Программы дисциплин", Content = GetDisciplineProgramsData() }, (s, a) => SetDisciplineProgramsElement()),
-                new TabElement(new TabModel() { Title = "Оценки", Content = GetMarksData() }, (s, a) => SetMarksData()),
+                new TabElement(new TabModel() { Title = "Оценки", Content = GetMarksData() }, (s, a) => SetMarksElement()),
+                new TabElement(new TabModel() { Title = "Занятия", Content = GetLessonsData() }, (s, a) => SetLessonsElement()),
                 new TabElement(new TabModel() { Title = "Пропуски занятий", Content = "", IsFirst = true }, (s, a) => SetAbsencesElement()),
                 new TabElement(new TabModel() { Title = "Группы", Content = GetGroupsData() }, (s, a) => SetGroupsElements()),
                 new TabElement(new TabModel() { Title = "Студенты", Content = GetStudentsData() }, (s, a) => SetStudentsElement()),
@@ -73,6 +74,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         }
 
         private string GetConsultationResultsData() => "Результаты консультаций...";
+        private string GetLessonsData() => "Занятия...";
         private string GetConsultationsData() => "Данные по консультациям...";
         private string GetDisciplineProgramsData() => "Программы дисциплин...";
         private string GetDisciplinesData() => "Список дисциплин...";
@@ -105,9 +107,13 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         {
             SwapPages(new ConsultationResultsList());
         }
-        private void SetMarksData()
+        private void SetMarksElement()
         {
             SwapPages(new MarksList());
+        }
+        private void SetLessonsElement()
+        {
+            SwapPages(new LessonsList());
         }
         private void SetGroupsElements()
         {

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -41,7 +40,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
         {
             try
             {
-                if (!IsUpdate) Context.DisciplineProgramms.Add(Model);
+                if (!IsUpdate) Context.DisciplinePrograms.Add(Model);
                 Context.SaveChanges();
                 GeneralPage.SwapPages(new DisciplineProgramsList());
             }

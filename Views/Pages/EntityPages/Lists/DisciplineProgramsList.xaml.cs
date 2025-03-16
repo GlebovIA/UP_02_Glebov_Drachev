@@ -16,7 +16,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
         public DisciplineProgramsList()
         {
             InitializeComponent();
-            IEnumerable<DisciplineProgramsModel> disciplinePrograms = context.DisciplineProgramms.Include(a => a.Discipline)
+            IEnumerable<DisciplineProgramsModel> disciplinePrograms = context.DisciplinePrograms.Include(a => a.Discipline)
                                   .Include(a => a.LessonType);
             ObservableCollection<DisciplineProgramsElement> elements = new ObservableCollection<DisciplineProgramsElement>();
             foreach (DisciplineProgramsModel model in disciplinePrograms)

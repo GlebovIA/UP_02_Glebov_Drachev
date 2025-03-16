@@ -1,18 +1,22 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
 {
-    public partial class LessonTypesPage : Page
+    public partial class LessonsPage : Page
     {
-        private LessonTypesContext Context { get; set; }
-        private LessonTypesModel Model { get; set; }
+        private LessonsContext Context { get; set; }
+        private GroupsContext GroupsContext = new GroupsContext();
+        private DisciplineProgramsContext DisciplineProgramsContext = new DisciplineProgramsContext();
+        private LessonsModel Model { get; set; }
         private bool IsUpdate = false;
 
-        public LessonTypesPage(LessonTypesContext context, LessonTypesModel model = null)
+        public LessonsPage(LessonsContext context, LessonsModel model = null)
         {
             InitializeComponent();
             Context = context;
@@ -22,18 +26,20 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
                 IsUpdate = true;
             }
             else
-                Model = new LessonTypesModel();
+                Model = new LessonsModel();
 
+            GroupsComboBox.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<GroupsModel>(GroupsContext.Groups) });
+            DisciplineProgramsComboBox.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<DisciplineProgramsModel>(DisciplineProgramsContext.DisciplinePrograms) });
             DataContext = Model;
         }
 
-        private void Acept(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void Accept(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             try
             {
-                if (!IsUpdate) Context.LessonTypes.Add(Model);
+                if (!IsUpdate) Context.Lessons.Add(Model);
                 Context.SaveChanges();
-                GeneralPage.SwapPages(new LessonTypesList());
+                GeneralPage.SwapPages(new LessonsList());
             }
             catch (Exception ex)
             {
@@ -43,7 +49,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
 
         private void Cancel(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            GeneralPage.SwapPages(new LessonTypesList());
+            GeneralPage.SwapPages(new LessonsList());
         }
     }
 }

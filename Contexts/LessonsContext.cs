@@ -5,7 +5,7 @@ namespace UP_02_Glebov_Drachev.Contexts
 {
     public class LessonsContext : BaseContext
     {
-        public DbSet<LessonModel> Lessons { get; set; }
+        public DbSet<LessonsModel> Lessons { get; set; }
         public LessonsContext()
         {
             Database.Migrate();
@@ -13,12 +13,12 @@ namespace UP_02_Glebov_Drachev.Contexts
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<LessonModel>()
+            modelBuilder.Entity<LessonsModel>()
                 .HasOne(a => a.DisciplineProgram)
                 .WithMany()
                 .HasForeignKey(a => a.DisciplineProgramId);
 
-            modelBuilder.Entity<LessonModel>()
+            modelBuilder.Entity<LessonsModel>()
                 .HasOne(a => a.StudGroup)
                 .WithMany()
                 .HasForeignKey(a => a.StudGroupId);

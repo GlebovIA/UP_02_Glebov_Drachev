@@ -72,7 +72,7 @@ namespace UP_02_Glebov_Drachev.Models
             }
         }
 
-        public virtual LessonModel Lesson { get; set; }
+        public virtual LessonsModel Lesson { get; set; }
         public virtual StudentsModel Student { get; set; }
     }
 }

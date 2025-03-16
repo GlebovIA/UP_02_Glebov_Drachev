@@ -33,7 +33,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
             StudentsComboBox.SetBinding(ComboBox.ItemsSourceProperty,
                 new Binding() { Source = new ObservableCollection<StudentsModel>(StudentsContext.Students) });
             LessonsComboBox.SetBinding(ComboBox.ItemsSourceProperty,
-                new Binding() { Source = new ObservableCollection<LessonModel>(LessonsContext.Lessons) });
+                new Binding() { Source = new ObservableCollection<LessonsModel>(LessonsContext.Lessons) });
             DataContext = Model;
         }
 
