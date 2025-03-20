@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using UP_02_Glebov_Drachev.Models;
@@ -8,9 +9,6 @@ using UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists;
 
 namespace UP_02_Glebov_Drachev.Views.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для GeneralPage.xaml
-    /// </summary>
     public partial class GeneralPage : Page
     {
         private static Frame pagesFrame { get; set; }
@@ -68,7 +66,10 @@ namespace UP_02_Glebov_Drachev.Views.Pages
                 new TabElement(new TabModel() { Title = "Типы занятий", Content = GetLessonTypesData() }, (s, a) => SetLessonTypeElement()),
                 new TabElement(new TabModel() { Title = "Преподаватели", Content = GetTeachersData() }, (s, a) => SetTeachersElement()),
                 new TabElement(new TabModel() { Title = "Преподавательские нагрузки", Content = GetTeachersLoadData() }, (s, a) => SetTeachersLoadElement()),
-                new TabElement(new TabModel() { Title = "Отчет по опозданиям", Content = GetTeachersData() }, (s, a) => AbsenceReport.GenerateReport())
+                new TabElement(new TabModel() { Title = "Отчет по опозданиям", Content = GetTeachersData() }, (s, a) => AbsenceReport.GenerateReport()),
+                // Новые вкладки с переходом на страницы
+                new TabElement(new TabModel() { Title = "Направление на пересдачу", Content = "Генерация направления на пересдачу" }, (s, a) => SwapPages(new RetakeReferralPage())),
+                new TabElement(new TabModel() { Title = "Сводка посещения", Content = "Генерация сводки посещения" }, (s, a) => SwapPages(new AttendanceSummaryPage()))
             };
             return tabs;
         }
@@ -87,57 +88,18 @@ namespace UP_02_Glebov_Drachev.Views.Pages
         private string GetTeachersLoadData() => "Данные о нагрузке преподавателей...";
         private string GetTeachersData() => "Список преподавателей...";
 
-        private void SetAbsencesElement()
-        {
-            SwapPages(new AbsencesList());
-        }
-        private void SetDisciplinesElement()
-        {
-            SwapPages(new DisciplinesList());
-        }
-        private void SetDisciplineProgramsElement()
-        {
-            SwapPages(new DisciplineProgramsList());
-        }
-        private void SetConsultationsElement()
-        {
-            SwapPages(new ConsultationsList());
-        }
-        private void SetConsultationResultsElement()
-        {
-            SwapPages(new ConsultationResultsList());
-        }
-        private void SetMarksElement()
-        {
-            SwapPages(new MarksList());
-        }
-        private void SetLessonsElement()
-        {
-            SwapPages(new LessonsList());
-        }
-        private void SetGroupsElements()
-        {
-            SwapPages(new GroupsList());
-        }
-        private void SetStudentsElement()
-        {
-            SwapPages(new StudentsList());
-        }
-        private void SetStudPlanElement()
-        {
-            SwapPages(new StudPlanList());
-        }
-        private void SetLessonTypeElement()
-        {
-            SwapPages(new LessonTypesList());
-        }
-        private void SetTeachersElement()
-        {
-            SwapPages(new TeachersList());
-        }
-        private void SetTeachersLoadElement()
-        {
-            SwapPages(new TeachersLoadList());
-        }
+        private void SetAbsencesElement() => SwapPages(new AbsencesList());
+        private void SetDisciplinesElement() => SwapPages(new DisciplinesList());
+        private void SetDisciplineProgramsElement() => SwapPages(new DisciplineProgramsList());
+        private void SetConsultationsElement() => SwapPages(new ConsultationsList());
+        private void SetConsultationResultsElement() => SwapPages(new ConsultationResultsList());
+        private void SetMarksElement() => SwapPages(new MarksList());
+        private void SetLessonsElement() => SwapPages(new LessonsList());
+        private void SetGroupsElements() => SwapPages(new GroupsList());
+        private void SetStudentsElement() => SwapPages(new StudentsList());
+        private void SetStudPlanElement() => SwapPages(new StudPlanList());
+        private void SetLessonTypeElement() => SwapPages(new LessonTypesList());
+        private void SetTeachersElement() => SwapPages(new TeachersList());
+        private void SetTeachersLoadElement() => SwapPages(new TeachersLoadList());
     }
 }
