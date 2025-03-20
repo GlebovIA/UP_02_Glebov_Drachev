@@ -1,30 +1,42 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
+using System.Windows.Input;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Elements;
+using UP_02_Glebov_Drachev.Views.Pages;
+using UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
 {
-    /// <summary>
-    /// Логика взаимодействия для MarksList.xaml
-    /// </summary>
     public partial class MarksList : Page
     {
-        MarksContext context = new MarksContext();
+        private MarksContext context = new MarksContext();
+
         public MarksList()
         {
             InitializeComponent();
-            IEnumerable<MarksModel> marks = context.Marks.Include(a => a.Student)
-                                  .ThenInclude(s => s.StudGroup)
-                                  .Include(a => a.Lesson);
+            LoadMarks();
+        }
+
+        private void LoadMarks()
+        {
+            var marks = context.Marks
+                .Include(a => a.Student)
+                .ThenInclude(s => s.StudGroup)
+                .Include(a => a.Lesson);
             ObservableCollection<MarksElement> elements = new ObservableCollection<MarksElement>();
             foreach (MarksModel model in marks)
             {
                 elements.Add(new MarksElement(model, context));
             }
             List.ItemsSource = elements;
+        }
+
+        private void AddClick(object sender, MouseButtonEventArgs e)
+        {
+            GeneralPage.SwapPages(new MarksPage(context));
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Windows.Input;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Elements;
+using UP_02_Glebov_Drachev.Views.Pages;
 using UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
@@ -26,7 +27,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
                 .Include(l => l.DisciplineProgram)
                 .ThenInclude(dp => dp.Discipline);
             ObservableCollection<LessonsElement> elements = new ObservableCollection<LessonsElement>();
-            foreach (LessonsModel model in lessons)
+            foreach (LessonsModel model in lessons) // Убедимся, что используется LessonsModel
             {
                 elements.Add(new LessonsElement(model, context));
             }
