@@ -66,12 +66,13 @@ namespace UP_02_Glebov_Drachev.Views.Pages
                 new TabElement(new TabModel() { Title = "Типы занятий", Content = GetLessonTypesData() }, (s, a) => SetLessonTypeElement()),
                 new TabElement(new TabModel() { Title = "Преподаватели", Content = GetTeachersData() }, (s, a) => SetTeachersElement()),
                 new TabElement(new TabModel() { Title = "Преподавательские нагрузки", Content = GetTeachersLoadData() }, (s, a) => SetTeachersLoadElement()),
-                new TabElement(new TabModel() { Title = "Отчет по опозданиям", Content = GetTeachersData() }, (s, a) => AbsenceReport.GenerateReport()),
+                // Обновленный вызов для отчета по опозданиям
+                new TabElement(new TabModel() { Title = "Отчет по должникам", Content = "Генерация отчета по должникам" }, (s, a) => SwapPages(new DebtorsReportPage())),
                 // Новые вкладки с переходом на страницы
                 new TabElement(new TabModel() { Title = "Направление на пересдачу", Content = "Генерация направления на пересдачу" }, (s, a) => SwapPages(new RetakeReferralPage())),
                 new TabElement(new TabModel() { Title = "Сводка посещения", Content = "Генерация сводки посещения" }, (s, a) => SwapPages(new AttendanceSummaryPage()))
             };
-            return tabs;
+             return tabs;
         }
 
         private string GetConsultationResultsData() => "Результаты консультаций...";
