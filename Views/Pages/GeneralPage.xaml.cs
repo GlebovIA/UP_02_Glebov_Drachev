@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using UP_02_Glebov_Drachev.Models;
-using UP_02_Glebov_Drachev.Reporting;
 using UP_02_Glebov_Drachev.Views.Controls;
 using UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists;
 
@@ -67,12 +65,12 @@ namespace UP_02_Glebov_Drachev.Views.Pages
                 new TabElement(new TabModel() { Title = "Преподаватели", Content = GetTeachersData() }, (s, a) => SetTeachersElement()),
                 new TabElement(new TabModel() { Title = "Преподавательские нагрузки", Content = GetTeachersLoadData() }, (s, a) => SetTeachersLoadElement()),
                 // Обновленный вызов для отчета по опозданиям
-                new TabElement(new TabModel() { Title = "Отчет по должникам", Content = "Генерация отчета по должникам" }, (s, a) => SwapPages(new DebtorsReportPage())),
+                new TabElement(new TabModel() { Title = "Отчет по опозданиям", Content = "Генерация отчета по опозданиям" }, (s, a) => SwapPages(new DebtorsReportPage())),
                 // Новые вкладки с переходом на страницы
                 new TabElement(new TabModel() { Title = "Направление на пересдачу", Content = "Генерация направления на пересдачу" }, (s, a) => SwapPages(new RetakeReferralPage())),
                 new TabElement(new TabModel() { Title = "Сводка посещения", Content = "Генерация сводки посещения" }, (s, a) => SwapPages(new AttendanceSummaryPage()))
             };
-             return tabs;
+            return tabs;
         }
 
         private string GetConsultationResultsData() => "Результаты консультаций...";

@@ -52,5 +52,6 @@ namespace UP_02_Glebov_Drachev.Models
 
         public virtual DisciplineProgramsModel DisciplineProgram { get; set; }
         public virtual GroupsModel StudGroup { get; set; }
+
     }
 }

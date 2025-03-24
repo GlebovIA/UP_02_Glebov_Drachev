@@ -58,5 +58,9 @@ namespace UP_02_Glebov_Drachev.Models
         public virtual TeachersModel Teacher { get; set; }
         public virtual DisciplinesModel Discipline { get; set; }
         public virtual GroupsModel StudGroup { get; set; }
+        public string Info
+        {
+            get { return Discipline.FullInfo + ", " + StudGroup.Name; }
+        }
     }
 }

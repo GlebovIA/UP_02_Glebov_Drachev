@@ -22,6 +22,11 @@ namespace UP_02_Glebov_Drachev.Contexts
                 .HasOne(a => a.StudGroup)
                 .WithMany()
                 .HasForeignKey(a => a.StudGroupId);
+
+            modelBuilder.Entity<DisciplineProgramsModel>()
+                .HasOne(a => a.Discipline)
+                .WithMany()
+                .HasForeignKey(a => a.DisciplineId);
         }
     }
 }

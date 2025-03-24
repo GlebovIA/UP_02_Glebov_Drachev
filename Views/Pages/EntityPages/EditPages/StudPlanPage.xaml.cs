@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,7 +30,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
 
             // Исправлено: Используем TeachersLoadComboBox вместо TeachersLoad
             TeachersLoadComboBox.SetBinding(ComboBox.ItemsSourceProperty,
-                new Binding() { Source = new ObservableCollection<TeachersLoadModel>(TeachersLoadContext.TeachersLoads) });
+                new Binding() { Source = new ObservableCollection<TeachersLoadModel>(TeachersLoadContext.TeachersLoads.Include(a => a.Discipline).ThenInclude(b => b.Teacher).Include(a => a.StudGroup)) });
             DataContext = Model;
         }
 

@@ -7,7 +7,7 @@
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Нагрузка преподавателя:" Foreground="#FF0060AC" FontSize="14"/>
-                    <TextBlock Text="{Binding TeachersLoad.Id}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5,0"/>
+                    <TextBlock Text="{Binding TeachersLoad.Info}" Foreground="#FF9EA1A2" FontSize="14" VerticalAlignment="Center" Margin="5,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Прошедшие часы лекций:" Foreground="#FF0060AC" FontSize="14"/>

@@ -9,7 +9,7 @@ namespace UP_02_Glebov_Drachev.Contexts
 
         public DisciplinesContext()
         {
-            Database.EnsureCreated();
+            Database.Migrate();
             Disciplines.Load();
         }
 

@@ -14,14 +14,14 @@ namespace UP_02_Glebov_Drachev.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<DisciplineProgramsModel>()
-                .HasOne(a => a.Discipline)
-                .WithMany()
-                .HasForeignKey(a => a.DisciplineId);
-
-            modelBuilder.Entity<DisciplineProgramsModel>()
                 .HasOne(a => a.LessonType)
                 .WithMany()
                 .HasForeignKey(a => a.LessonTypeId);
+
+            modelBuilder.Entity<DisciplineProgramsModel>()
+                .HasOne(a => a.Discipline)
+                .WithMany()
+                .HasForeignKey(a => a.DisciplineId);
         }
     }
 }

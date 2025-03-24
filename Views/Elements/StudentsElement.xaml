@@ -22,11 +22,11 @@
 
                 <StackPanel Orientation="Horizontal">
                     <Label Content="Группа:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
-                    <TextBlock Text="{Binding StudGroup}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
+                    <TextBlock Text="{Binding StudGroup.Name}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Дата вызова:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
+                    <Label Content="Дата отчисления:" Foreground="#FF0060AC" FontSize="14" FontFamily="Corbel"/>
                     <TextBlock Text="{Binding DateOfRemand}" Foreground="#FF9EA1A2" FontSize="14" FontFamily="Corbel" VerticalAlignment="Center" Margin="5, 0, 0, 0"/>
                 </StackPanel>
             </StackPanel>

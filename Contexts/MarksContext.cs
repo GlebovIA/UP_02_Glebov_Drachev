@@ -6,11 +6,13 @@ namespace UP_02_Glebov_Drachev.Contexts
     public class MarksContext : BaseContext
     {
         public DbSet<MarksModel> Marks { get; set; }
+
         public MarksContext()
         {
             Database.Migrate();
-            Marks.Load();
+            Marks.Include(m => m.Lesson).ThenInclude(l => l.DisciplineProgram).Load();
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<MarksModel>()

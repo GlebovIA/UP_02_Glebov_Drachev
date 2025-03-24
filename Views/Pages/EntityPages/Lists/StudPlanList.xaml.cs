@@ -5,7 +5,6 @@ using System.Windows.Input;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Elements;
-using UP_02_Glebov_Drachev.Views.Pages;
 using UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
@@ -22,7 +21,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
 
         private void LoadStudPlans()
         {
-            var studPlans = context.StudPlans.Include(a => a.TeachersLoad);
+            var studPlans = context.StudPlans.Include(a => a.TeachersLoad).ThenInclude(b => b.Discipline).ThenInclude(c => c.Teacher).Include(b => b.TeachersLoad).ThenInclude(c => c.StudGroup);
             ObservableCollection<StudPlanElement> elements = new ObservableCollection<StudPlanElement>();
             foreach (StudPlanModel model in studPlans)
             {

@@ -39,7 +39,7 @@
                     <control:PlaceholderedTextBox Grid.Row="1" Grid.Column="1" Text="{Binding Mark, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceHolder="Введите оценку" Margin="0,0,0,15" HorizontalAlignment="Stretch"/>
 
                     <Label Grid.Row="2" Grid.Column="0" Content="Занятие:" Foreground="#FF0060AC" FontSize="16" FontFamily="Segoe UI" FontWeight="SemiBold" VerticalAlignment="Center"/>
-                    <ComboBox Grid.Row="2" Grid.Column="1" x:Name="LessonsComboBox" DisplayMemberPath="Time" SelectedValuePath="Id" SelectedValue="{Binding LessonId}" Foreground="#FF9EA1A2" FontSize="16" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="0,0,0,15" HorizontalAlignment="Stretch"/>
+                    <ComboBox Grid.Row="2" Grid.Column="1" x:Name="ThemsComboBox" DisplayMemberPath="DisciplineProgram.Theme" SelectedValuePath="Id" SelectedValue="{Binding Id}" Foreground="#FF9EA1A2" FontSize="16" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="0,0,0,15" HorizontalAlignment="Stretch"/>
 
                     <Label Grid.Row="3" Grid.Column="0" Content="Студент:" Foreground="#FF0060AC" FontSize="16" FontFamily="Segoe UI" FontWeight="SemiBold" VerticalAlignment="Center"/>
                     <ComboBox Grid.Row="3" Grid.Column="1" x:Name="StudentsComboBox" DisplayMemberPath="FullName" SelectedValuePath="Id" SelectedValue="{Binding StudentId}" Foreground="#FF9EA1A2" FontSize="16" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="0,0,0,15" HorizontalAlignment="Stretch"/>

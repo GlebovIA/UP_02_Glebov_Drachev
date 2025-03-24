@@ -40,7 +40,7 @@
 
                     <!-- Программа дисциплины -->
                     <Label Grid.Row="2" Grid.Column="0" Content="Дисциплина:" Foreground="#FF0060AC" FontSize="16" FontFamily="Segoe UI" FontWeight="SemiBold" VerticalAlignment="Center"/>
-                    <ComboBox Grid.Row="2" Grid.Column="1" x:Name="DisciplineProgramsComboBox" DisplayMemberPath="Discipline.Name" SelectedValuePath="Id" SelectedValue="{Binding DisciplineProgramId}" Foreground="#FF9EA1A2" FontSize="16" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="0,0,0,15" HorizontalAlignment="Stretch"/>
+                    <ComboBox Grid.Row="2" Grid.Column="1" x:Name ="DisciplineProgramsComboBox" DisplayMemberPath="Discipline.Name" SelectedValuePath="Id" SelectedValue="{Binding DisciplineProgramId}" Foreground="#FF9EA1A2" FontSize="16" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="0,0,0,15" HorizontalAlignment="Stretch"/>
                 </Grid>
 
                 <!-- Кнопки -->

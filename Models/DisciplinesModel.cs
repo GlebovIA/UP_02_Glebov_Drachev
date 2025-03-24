@@ -43,7 +43,7 @@ namespace UP_02_Glebov_Drachev.Models
         [NotMapped]
         public string FullInfo
         {
-            get { return $"{Name}({Teacher.FullName})"; }
+            get { return $"{Name}, {Teacher.FullName}"; }
         }
     }
 }

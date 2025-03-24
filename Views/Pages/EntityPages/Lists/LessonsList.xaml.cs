@@ -5,7 +5,6 @@ using System.Windows.Input;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Elements;
-using UP_02_Glebov_Drachev.Views.Pages;
 using UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists

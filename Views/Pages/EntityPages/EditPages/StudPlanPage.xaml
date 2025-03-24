@@ -31,7 +31,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Row="0" Grid.Column="0" Content="Нагрузка преподавателя:" Foreground="#FF0060AC" FontSize="16" FontFamily="Segoe UI" FontWeight="SemiBold" VerticalAlignment="Center"/>
-                    <ComboBox Grid.Row="0" Grid.Column="1" x:Name="TeachersLoadComboBox" DisplayMemberPath="Id" SelectedValuePath="Id" SelectedValue="{Binding TeachersLoadId}" Foreground="#FF9EA1A2" FontSize="16" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="0,0,0,15" HorizontalAlignment="Stretch"/>
+                    <ComboBox Grid.Row="0" Grid.Column="1" x:Name="TeachersLoadComboBox" DisplayMemberPath="Info" SelectedValuePath="Id" SelectedValue="{Binding TeachersLoadId}" Foreground="#FF9EA1A2" FontSize="16" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="0,0,0,15" HorizontalAlignment="Stretch"/>
 
                     <Label Grid.Row="1" Grid.Column="0" Content="Прошедшие лекции:" Foreground="#FF0060AC" FontSize="16" FontFamily="Segoe UI" FontWeight="SemiBold" VerticalAlignment="Center"/>
                     <control:PlaceholderedTextBox Grid.Row="1" Grid.Column="1" Text="{Binding PastLectureHours, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceHolder="Введите часы" Margin="0,0,0,15" HorizontalAlignment="Stretch"/>

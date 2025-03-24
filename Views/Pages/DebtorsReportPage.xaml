@@ -16,7 +16,7 @@
                 </Grid.RowDefinitions>
 
                 <!-- Заголовок -->
-                <TextBlock Grid.Row="0" Text="Отчет по должникам" FontSize="24" FontWeight="Bold" Foreground="#FF0060AC" Margin="0,0,0,20"/>
+                <TextBlock Grid.Row="0" Text="Отчет по опозданиям" FontSize="24" FontWeight="Bold" Foreground="#FF0060AC" Margin="0,0,0,20"/>
 
                 <!-- Кнопки -->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">

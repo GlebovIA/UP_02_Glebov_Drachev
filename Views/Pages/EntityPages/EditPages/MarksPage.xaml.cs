@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,8 +32,8 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
             // Исправлено: Student -> StudentsComboBox, Lesson -> LessonsComboBox
             StudentsComboBox.SetBinding(ComboBox.ItemsSourceProperty,
                 new Binding() { Source = new ObservableCollection<StudentsModel>(StudentsContext.Students) });
-            LessonsComboBox.SetBinding(ComboBox.ItemsSourceProperty,
-                new Binding() { Source = new ObservableCollection<LessonsModel>(LessonsContext.Lessons) });
+            ThemsComboBox.SetBinding(ComboBox.ItemsSourceProperty,
+                new Binding() { Source = new ObservableCollection<LessonsModel>(LessonsContext.Lessons.Include(a => a.DisciplineProgram)) });
             DataContext = Model;
         }
 

@@ -1,13 +1,16 @@
-﻿using System.Collections.ObjectModel;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
 {
+    /// <summary>
+    /// Логика взаимодействия для LessonsPage.xaml
+    /// </summary>
     public partial class LessonsPage : Page
     {
         private LessonsContext Context { get; set; }
@@ -28,8 +31,14 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
             else
                 Model = new LessonsModel();
 
-            GroupsComboBox.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<GroupsModel>(GroupsContext.Groups) });
-            DisciplineProgramsComboBox.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<DisciplineProgramsModel>(DisciplineProgramsContext.DisciplinePrograms) });
+            // Загрузка данных
+            GroupsComboBox.ItemsSource = new ObservableCollection<GroupsModel>(GroupsContext.Groups);
+            DisciplineProgramsComboBox.ItemsSource = new ObservableCollection<DisciplineProgramsModel>(DisciplineProgramsContext.DisciplinePrograms.Include(dp => dp.Discipline));
+
+            // Проверка данных
+            Console.WriteLine($"DisciplinePrograms count: {DisciplineProgramsContext.DisciplinePrograms.Count()}");
+            Console.WriteLine($"Selected DisciplineProgramId: {Model.DisciplineProgramId}");
+
             DataContext = Model;
         }
 
