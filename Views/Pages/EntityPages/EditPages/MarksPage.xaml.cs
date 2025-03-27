@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,19 +22,24 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
         {
             InitializeComponent();
             Context = context;
+
             if (model != null)
             {
                 Model = model;
                 IsUpdate = true;
             }
             else
-                Model = new MarksModel();
+            {
+                // Устанавливаем текущую дату по умолчанию для новой записи
+                Model = new MarksModel { Date = DateTime.Today };
+            }
 
-            // Исправлено: Student -> StudentsComboBox, Lesson -> LessonsComboBox
+            // Привязка данных для ComboBox
             StudentsComboBox.SetBinding(ComboBox.ItemsSourceProperty,
                 new Binding() { Source = new ObservableCollection<StudentsModel>(StudentsContext.Students) });
             ThemsComboBox.SetBinding(ComboBox.ItemsSourceProperty,
                 new Binding() { Source = new ObservableCollection<LessonsModel>(LessonsContext.Lessons.Include(a => a.DisciplineProgram)) });
+
             DataContext = Model;
         }
 
@@ -41,13 +47,53 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
         {
             try
             {
-                if (!IsUpdate) Context.Marks.Add(Model);
+                // Валидация данных
+                if (Model.Date == DateTime.MinValue)
+                {
+                    MessageBox.Show("Пожалуйста, выберите дату.");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(Model.Mark))
+                {
+                    MessageBox.Show("Пожалуйста, укажите оценку.");
+                    return;
+                }
+
+                if (Model.LessonId == 0)
+                {
+                    MessageBox.Show("Пожалуйста, выберите занятие.");
+                    return;
+                }
+
+                if (Model.StudentId == 0)
+                {
+                    MessageBox.Show("Пожалуйста, выберите студента.");
+                    return;
+                }
+
+                // Добавление или обновление записи
+                if (IsUpdate)
+                {
+                    // Проверяем, отслеживается ли модель
+                    var entry = Context.Entry(Model);
+                    if (entry.State == EntityState.Detached)
+                    {
+                        Context.Attach(Model);
+                        entry.State = EntityState.Modified;
+                    }
+                }
+                else
+                {
+                    Context.Marks.Add(Model);
+                }
+
                 Context.SaveChanges();
                 GeneralPage.SwapPages(new MarksList());
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Ошибка: {ex.InnerException?.Message ?? ex.Message}");
             }
         }
 

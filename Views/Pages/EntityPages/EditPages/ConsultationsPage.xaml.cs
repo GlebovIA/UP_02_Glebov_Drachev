@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +21,8 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
         {
             InitializeComponent();
             Context = context;
+
+            // Инициализация модели
             if (model != null)
             {
                 Model = model;
@@ -27,12 +30,15 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
             }
             else
             {
-                Model = new ConsultationsModel();
+                // Устанавливаем текущую дату по умолчанию для новой записи
+                Model = new ConsultationsModel { Date = DateTime.Today };
             }
 
-            // Привязка дисциплин к ComboBox с правильным именем
+            // Привязка данных для ComboBox с дисциплинами
             DisciplinesComboBox.SetBinding(ComboBox.ItemsSourceProperty,
                 new Binding() { Source = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines) });
+
+            // Установка DataContext для привязки данных
             DataContext = Model;
         }
 
@@ -40,15 +46,46 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
         {
             try
             {
-                if (!IsUpdate) // Исправлено: Добавляем новую запись только если это не обновление
+                // Валидация: проверяем, выбрана ли дата
+                if (Model.Date == DateTime.MinValue)
+                {
+                    MessageBox.Show("Пожалуйста, выберите дату.");
+                    return;
+                }
+
+                // Валидация: проверяем, выбрана ли дисциплина
+                if (Model.DisciplineId == 0)
+                {
+                    MessageBox.Show("Пожалуйста, выберите дисциплину.");
+                    return;
+                }
+
+                // Если это обновление, проверяем состояние модели
+                if (IsUpdate)
+                {
+                    var entry = Context.Entry(Model);
+                    if (entry.State == EntityState.Detached)
+                    {
+                        Context.Attach(Model);
+                        entry.State = EntityState.Modified;
+                    }
+                }
+                else
+                {
+                    // Добавляем новую запись
                     Context.Consultations.Add(Model);
+                }
+
                 // Сохраняем изменения
                 Context.SaveChanges();
+
+                // Переходим к списку консультаций
                 GeneralPage.SwapPages(new ConsultationsList());
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                // Улучшенная обработка ошибок с выводом внутреннего исключения
+                MessageBox.Show($"Ошибка: {ex.InnerException?.Message ?? ex.Message}");
             }
         }
 

@@ -29,6 +29,7 @@ namespace UP_02_Glebov_Drachev.Views.Elements
         private void DeleteClick(object sender, MouseButtonEventArgs e)
         {
             Context.Remove(Model);
+            Context.SaveChanges();
             GeneralPage.SwapPages(new TeachersLoadList());
         }
     }

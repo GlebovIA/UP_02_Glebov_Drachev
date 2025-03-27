@@ -33,7 +33,7 @@
                     <ComboBox Grid.Row="0" Grid.Column="1" x:Name="DisciplinesComboBox" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding DisciplineId}" Foreground="#FF9EA1A2" FontSize="16" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="0,0,0,15" HorizontalAlignment="Stretch"/>
 
                     <Label Grid.Row="1" Grid.Column="0" Content="Дата:" Foreground="#FF0060AC" FontSize="16" FontFamily="Segoe UI" FontWeight="SemiBold" VerticalAlignment="Center"/>
-                    <DatePicker Grid.Row="1" Grid.Column="1" SelectedDate="{Binding Date}" Foreground="#FF9EA1A2" FontSize="16" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="0,0,0,15" HorizontalAlignment="Stretch"/>
+                    <DatePicker Grid.Row="1" Grid.Column="1" SelectedDate="{Binding Date, Mode=TwoWay}" Foreground="#FF9EA1A2" FontSize="16" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="0,0,0,15" HorizontalAlignment="Stretch"/>
                 </Grid>
 
                 <!-- Кнопки -->

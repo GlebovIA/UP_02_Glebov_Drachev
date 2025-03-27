@@ -10,6 +10,7 @@ namespace UP_02_Glebov_Drachev.Models
         private string _theme;
         private int _lessonTypeId;
         private int _hoursCount;
+        private bool _completed;
 
         public int Id
         {
@@ -61,6 +62,15 @@ namespace UP_02_Glebov_Drachev.Models
             }
         }
 
+        public bool Completed
+        {
+            get { return _completed; }
+            set
+            {
+                _completed = value;
+                OnPropertyChanged(nameof(Completed));
+            }
+        }
         public virtual DisciplinesModel Discipline { get; set; }
         public virtual LessonTypesModel LessonType { get; set; }
     }
