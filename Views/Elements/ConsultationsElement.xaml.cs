@@ -20,7 +20,6 @@ namespace UP_02_Glebov_Drachev.Views.Elements
             Context = context;
             DataContext = Model;
         }
-
         private void RedacClick(object sender, MouseButtonEventArgs e)
         {
             // Передаем контекст и модель консультации в конструктор страницы
