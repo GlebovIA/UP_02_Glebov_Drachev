@@ -31,8 +31,7 @@
                                                 PlaceHolder="Пароль"
                                                 Margin="0,0,0,20"/>
                 <Grid HorizontalAlignment="Center">
-                    <phTBx:RoundButton Text="Вход" MouseLeftButtonDown="SignInClick" HorizontalAlignment="Left" Margin="0,4,0,4" Width="145"/>
-                    <phTBx:RoundButton Text="Регистрация" MouseLeftButtonDown="RegInClick" HorizontalAlignment="Left" Margin="168,4,0,4" Width="147"/>
+                    <phTBx:RoundButton Text="Вход" MouseLeftButtonDown="SignInClick" Width="320"/>
                 </Grid>
                 <TextBlock Text="Забыли пароль?"
                            FontSize="16"

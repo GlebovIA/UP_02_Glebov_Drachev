@@ -11,6 +11,6 @@
     </Border.Effect>
     <Grid>
         <TextBlock x:Name="Placeholder" VerticalAlignment="Center" FontSize="16" FontFamily="Segoe UI" Foreground="#FF9EA1A2" Margin="15,0,0,0"/>
-        <TextBox x:Name="TextBox" Height="50" Padding="15,0,15,0" FontSize="16" FontFamily="Segoe UI" Background="Transparent" BorderThickness="0" Foreground="Black" VerticalAlignment="Center"/>
+        <TextBox x:Name="TextBox" Padding="15,0,15,0" FontSize="16" FontFamily="Segoe UI" Background="Transparent" BorderThickness="0" Foreground="Black" VerticalAlignment="Center"/>
     </Grid>
 </Border>
