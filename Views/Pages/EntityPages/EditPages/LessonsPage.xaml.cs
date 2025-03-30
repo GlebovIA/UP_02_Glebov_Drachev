@@ -29,7 +29,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
                 IsUpdate = true;
             }
             else
-                Model = new LessonsModel();
+                Model = new LessonsModel() { Date = DateTime.Today };
 
             // Загрузка данных
             GroupsComboBox.ItemsSource = new ObservableCollection<GroupsModel>(GroupsContext.Groups);

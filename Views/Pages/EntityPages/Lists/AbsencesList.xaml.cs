@@ -5,8 +5,6 @@ using System.Windows.Input;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Elements;
-using UP_02_Glebov_Drachev.Views.Pages;
-using UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
 {
@@ -25,7 +23,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
             var absences = context.Absences
                 .Include(a => a.Student)
                 .ThenInclude(s => s.StudGroup)
-                .Include(a => a.Discipline);
+                .Include(a => a.Discipline).OrderByDescending(x => x.Date);
             ObservableCollection<AbsencesElement> elements = new ObservableCollection<AbsencesElement>();
             foreach (AbsencesModel model in absences)
             {

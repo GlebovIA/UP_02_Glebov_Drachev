@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -27,7 +26,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
                 IsUpdate = true;
             }
             else
-                Model = new StudentsModel();
+                Model = new StudentsModel() { DateOfRemand = DateTime.Today };
 
             // Исправлено: Group -> StudGroupsComboBox
             StudGroupsComboBox.SetBinding(ComboBox.ItemsSourceProperty,

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -27,7 +26,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages
                 IsUpdate = true;
             }
             else
-                Model = new AbsencesModel();
+                Model = new AbsencesModel() { Date = DateTime.Today };
 
             StudentsComboBox.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<StudentsModel>(StudentsContext.Students) });
             DisciplinesComboBox.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = new ObservableCollection<DisciplinesModel>(DisciplinesContext.Disciplines) });

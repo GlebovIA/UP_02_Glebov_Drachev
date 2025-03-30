@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Windows;
 
 namespace UP_02_Glebov_Drachev.Models
 {
@@ -8,7 +9,8 @@ namespace UP_02_Glebov_Drachev.Models
         private int _id;
         private int _disciplineProgramId;
         private int _studGroupId;
-        private DateTime _time;
+        private DateTime _date;
+        private TimeSpan _time;
 
         public int Id
         {
@@ -40,7 +42,17 @@ namespace UP_02_Glebov_Drachev.Models
             }
         }
 
-        public DateTime Time
+        public DateTime Date
+        {
+            get { return _date; }
+            set
+            {
+                _date = value;
+                OnPropertyChanged(nameof(Date));
+            }
+        }
+
+        public TimeSpan Time
         {
             get { return _time; }
             set
@@ -53,5 +65,30 @@ namespace UP_02_Glebov_Drachev.Models
         public virtual DisciplineProgramsModel DisciplineProgram { get; set; }
         public virtual GroupsModel StudGroup { get; set; }
 
+        [NotMapped]
+        public DateTime FullInfo
+        {
+            get { return Date + Time; }
+        }
+        [NotMapped]
+        public String TimeString
+        {
+            set
+            {
+                try
+                {
+                    _time = TimeSpan.Parse(value);
+                    OnPropertyChanged(nameof(Time));
+                }
+                catch
+                {
+                    MessageBox.Show("Неверно указано время");
+                }
+            }
+            get
+            {
+                return _time.ToString();
+            }
+        }
     }
 }

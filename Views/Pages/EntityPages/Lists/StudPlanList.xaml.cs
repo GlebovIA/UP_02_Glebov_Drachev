@@ -21,7 +21,11 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
 
         private void LoadStudPlans()
         {
-            var studPlans = context.StudPlans.Include(a => a.TeachersLoad).ThenInclude(b => b.Discipline).ThenInclude(c => c.Teacher).Include(b => b.TeachersLoad).ThenInclude(c => c.StudGroup);
+            var studPlans = context.StudPlans.Include(a => a.TeachersLoad)
+                .ThenInclude(b => b.Discipline)
+                .ThenInclude(c => c.Teacher)
+                .Include(b => b.TeachersLoad)
+                .ThenInclude(c => c.StudGroup).OrderBy(x => x.TeachersLoad.Discipline.Name).ThenBy(x => x.TeachersLoad.Teacher.Surname);
             ObservableCollection<StudPlanElement> elements = new ObservableCollection<StudPlanElement>();
             foreach (StudPlanModel model in studPlans)
             {

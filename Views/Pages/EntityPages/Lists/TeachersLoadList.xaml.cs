@@ -5,7 +5,6 @@ using System.Windows.Input;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Elements;
-using UP_02_Glebov_Drachev.Views.Pages;
 using UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
@@ -25,7 +24,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
             var teachersLoads = context.TeachersLoads
                 .Include(tl => tl.Teacher)
                 .Include(tl => tl.Discipline)
-                .Include(tl => tl.StudGroup);
+                .Include(tl => tl.StudGroup).OrderBy(x => x.Discipline.Name).ThenBy(x => x.Teacher.Surname);
             ObservableCollection<TeachersLoadElement> elements = new ObservableCollection<TeachersLoadElement>();
             foreach (TeachersLoadModel model in teachersLoads)
             {

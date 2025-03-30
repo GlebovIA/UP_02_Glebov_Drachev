@@ -4,7 +4,6 @@ using System.Windows.Input;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Elements;
-using UP_02_Glebov_Drachev.Views.Pages;
 using UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
@@ -21,7 +20,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
 
         private void LoadGroups()
         {
-            var groups = context.Groups;
+            var groups = context.Groups.OrderBy(x => x.Name);
             ObservableCollection<GroupsElement> elements = new ObservableCollection<GroupsElement>();
             foreach (GroupsModel model in groups)
             {

@@ -5,7 +5,6 @@ using System.Windows.Input;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Elements;
-using UP_02_Glebov_Drachev.Views.Pages;
 using UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
@@ -24,7 +23,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
         {
             var disciplinePrograms = context.DisciplinePrograms
                 .Include(a => a.Discipline)
-                .Include(a => a.LessonType);
+                .Include(a => a.LessonType).OrderBy(x => x.Discipline);
             ObservableCollection<DisciplineProgramsElement> elements = new ObservableCollection<DisciplineProgramsElement>();
             foreach (DisciplineProgramsModel model in disciplinePrograms)
             {

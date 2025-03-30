@@ -24,7 +24,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
             var lessons = context.Lessons
                 .Include(l => l.StudGroup)
                 .Include(l => l.DisciplineProgram)
-                .ThenInclude(dp => dp.Discipline);
+                .ThenInclude(dp => dp.Discipline).OrderByDescending(x => x.Date).ThenByDescending(x => x.Time);
             ObservableCollection<LessonsElement> elements = new ObservableCollection<LessonsElement>();
             foreach (LessonsModel model in lessons) // Убедимся, что используется LessonsModel
             {

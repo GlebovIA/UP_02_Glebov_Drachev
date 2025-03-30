@@ -5,7 +5,6 @@ using System.Windows.Input;
 using UP_02_Glebov_Drachev.Contexts;
 using UP_02_Glebov_Drachev.Models;
 using UP_02_Glebov_Drachev.Views.Elements;
-using UP_02_Glebov_Drachev.Views.Pages;
 using UP_02_Glebov_Drachev.Views.Pages.EntityPages.EditPages;
 
 namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
@@ -26,7 +25,7 @@ namespace UP_02_Glebov_Drachev.Views.Pages.EntityPages.Lists
                 .Include(a => a.Consultation)
                 .ThenInclude(s => s.Discipline)
                 .ThenInclude(w => w.Teacher)
-                .Include(a => a.Student);
+                .Include(a => a.Student).OrderByDescending(x => x.Consultation.Date);
             ObservableCollection<ConsultationResultsElement> elements = new ObservableCollection<ConsultationResultsElement>();
             foreach (ConsultationResultsModel model in consultations)
             {

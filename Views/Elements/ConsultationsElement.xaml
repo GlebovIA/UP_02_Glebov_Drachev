@@ -14,7 +14,7 @@
             <StackPanel Grid.Column="0">
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                     <Label Content="Дата:" Foreground="#FF0060AC" FontSize="16" FontFamily="Segoe UI" FontWeight="SemiBold"/>
-                    <TextBlock Text="{Binding Date, StringFormat=dd-MM-yyyy}" Foreground="#FF9EA1A2" FontSize="16" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="10,0"/>
+                    <TextBlock Text="{Binding Date, StringFormat=dd.MM.yyyy}" Foreground="#FF9EA1A2" FontSize="16" FontFamily="Segoe UI" VerticalAlignment="Center" Margin="10,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                     <Label Content="Дисциплина:" Foreground="#FF0060AC" FontSize="16" FontFamily="Segoe UI" FontWeight="SemiBold"/>
